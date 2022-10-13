@@ -5199,7 +5199,44 @@ function MyComponent() {
 </details>
 
 <details>
-<summary>91. ???</summary>
+<summary>91. Що таке зворотний потік даних (Reverse Data Flow) у React?</summary>
+
+#### React
+
+- Зворотний потік даних (Reverse Data Flow) у React означає передачу змін у стані від дочірнього компонента до батьківського компонента. Це протилежність звичайному потоку даних, де батьківський компонент передає пропси дочірньому компоненту.
+
+#### У React зворотний потік даних зазвичай реалізується через:
+
+1. **Callback-функції:**
+
+- Дочірній компонент викликає callback, переданий йому через пропси, щоб повідомити батьківський компонент про зміни в своєму стані або виконати якісь дії.
+
+- Наприклад, при оновленні значення в дочірньому компоненті, можна викликати функцію з батьківського компонента, яка оновлює стан.
+
+2. **Приклад:**
+
+```jsx
+function Parent() {
+  const [value, setValue] = useState("");
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
+
+  return <Child onValueChange={handleChange} />;
+}
+
+function Child({ onValueChange }) {
+  return <input type="text" onChange={(e) => onValueChange(e.target.value)} />;
+}
+```
+
+- У цьому прикладі дочірній компонент передає значення в батьківський через функцію onValueChange, що реалізує зворотний потік даних.
+
+</details>
+
+<details>
+<summary>92. ???</summary>
 
 #### React
 
