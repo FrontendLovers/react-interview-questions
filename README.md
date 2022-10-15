@@ -5027,7 +5027,45 @@ return createPortal(<div>Modal</div>, document.getElementById("modal-root"));
 </details>
 
 <details>
-<summary>87. ???</summary>
+<summary>87. Що таке синтетичні події (SyntheticEvent) у React?</summary>
+
+#### React
+
+- **SyntheticEvent** у React — це обгортка над нативними подіями браузера, яка забезпечує кросбраузерну сумісність і покращує продуктивність.
+
+#### Особливості SyntheticEvent:
+
+- Працює однаково у всіх браузерах.
+
+- Використовує пулізацію (event pooling), що запобігає утриманню зайвих об'єктів у пам’яті.
+
+- Всі події нормалізовані та мають однакові властивості незалежно від браузера.
+
+#### Приклад використання:
+
+```jsx
+function MyComponent() {
+  const handleClick = (event) => {
+    console.log(event.type); // "click"
+    console.log(event.nativeEvent); // Оригінальна подія браузера
+  };
+
+  return <button onClick={handleClick}>Натисни</button>;
+}
+```
+
+#### Основні методи:
+
+- `event.preventDefault()` — запобігає стандартній поведінці.
+
+- `event.stopPropagation()` — зупиняє спливання події.
+
+- `event.persist()` — вимикає пулізацію, щоб подія не скидалася.
+
+</details>
+
+<details>
+<summary>88. ???</summary>
 
 #### React
 
