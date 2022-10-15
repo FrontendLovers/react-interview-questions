@@ -5295,7 +5295,73 @@ function App() {
 </details>
 
 <details>
-<summary>93. ???</summary>
+<summary>93. Як виконати код перед видаленням компонента з дерева?</summary>
+
+#### React
+
+- Щоб виконати код перед видаленням компонента з дерева в React, використовують такі підходи:
+
+1. Класові компоненти: componentWillUnmount
+
+- Для класових компонентів є метод життєвого циклу componentWillUnmount, який викликається перед видаленням компонента.
+
+```jsx
+class MyComponent extends React.Component {
+  componentWillUnmount() {
+    console.log("Компонент буде видалено");
+  }
+
+  render() {
+    return <div>Мій компонент</div>;
+  }
+}
+```
+
+2. Функціональні компоненти: useEffect з очищенням
+
+- У функціональних компонентах очищення можна зробити в useEffect, повернувши функцію, яка виконається перед видаленням компонента.
+
+```jsx
+import { useEffect } from "react";
+
+function MyComponent() {
+  useEffect(() => {
+    return () => {
+      console.log("Компонент буде видалено");
+    };
+  }, []);
+
+  return <div>Мій компонент</div>;
+}
+```
+
+3. Обробка перед закриттям сторінки (beforeunload)
+
+- Якщо потрібно виконати код перед закриттям вкладки або перезавантаженням сторінки:
+
+```jsx
+useEffect(() => {
+  const handleUnload = () => {
+    console.log("Сторінка закривається");
+  };
+
+  window.addEventListener("beforeunload", handleUnload);
+  return () => window.removeEventListener("beforeunload", handleUnload);
+}, []);
+```
+
+#### Висновок
+
+- `componentWillUnmount` – для класових компонентів.
+
+- `useEffect` із `return` – для функціональних.
+
+- `beforeunload` – для випадків, коли потрібно реагувати на вихід із сторінки.
+
+</details>
+
+<details>
+<summary>94. ???</summary>
 
 #### React
 
