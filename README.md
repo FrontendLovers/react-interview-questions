@@ -5664,7 +5664,67 @@ dispatch(fetchData());
 </details>
 
 <details>
-<summary>104. ???</summary>
+<summary>104. Як працює Redux Saga?</summary>
+
+#### React
+
+- **Redux Saga** — це middleware для Redux, яке використовує генератори (function\*) для керування асинхронними запитами в додатку.
+
+#### Як працює:
+
+1. **Слухає екшени** (`takeEvery`, `takeLatest`) і реагує на них.
+
+2. **Виконує побічні ефекти** (запити до API, таймери тощо).
+
+3. **Диспатчить нові екшени** (`put`) у store.
+
+#### Приклад:
+
+1. **Сага для отримання даних з API:**
+
+```jsx
+import { call, put, takeEvery } from "redux-saga/effects";
+
+function* fetchData() {
+  try {
+    const response = yield call(fetch, "https://api.example.com/data");
+    const data = yield response.json();
+    yield put({ type: "FETCH_SUCCESS", payload: data });
+  } catch (error) {
+    yield put({ type: "FETCH_ERROR", error });
+  }
+}
+```
+
+2. **Слухач екшенів:**
+
+```jsx
+function* watchFetchData() {
+  yield takeEvery("FETCH_REQUEST", fetchData);
+}
+```
+
+3. **Запуск саги в `store`:**
+
+```jsx
+import createSagaMiddleware from "redux-saga";
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(watchFetchData);
+```
+
+#### Переваги Redux Saga:
+
+✅ Керує складною асинхронною логікою.
+✅ Вбудоване оброблення скасувань (`takeLatest`).
+✅ Потужні оператори (`call`, `put`, `select`, `delay`).
+
+- Redux Thunk простіший, але для складних сценаріїв **Saga краще підходить**.
+
+</details>
+
+<details>
+<summary>105. ???</summary>
 
 #### React
 
