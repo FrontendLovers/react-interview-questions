@@ -5724,7 +5724,72 @@ sagaMiddleware.run(watchFetchData);
 </details>
 
 <details>
-<summary>105. ???</summary>
+<summary>105. Для чого потрібен React Helmet Async?</summary>
+
+#### React
+
+- **React Helmet Async** — це оптимізована версія **React Helmet**, яка використовується для динамічного оновлення `<head>` (мета-теги, заголовки, Open Graph тощо) у React-додатках.
+
+#### Навіщо потрібен?
+
+1. **SEO-оптимізація** – дозволяє змінювати заголовки сторінок, мета-описи, ключові слова.
+
+2. **Динамічний `<head>`** – можна змінювати теги для кожної сторінки без перезавантаження.
+
+3. **Підтримка SSR (Server-Side Rendering)** – на відміну від звичайного React Helmet, ця версія коректно працює у SSR-додатках без проблем з асинхронністю.
+
+#### Приклад використання:
+
+```jsx
+import { Helmet } from "react-helmet-async";
+
+function MyComponent() {
+  return (
+    <Helmet>
+      <title>Головна сторінка</title>
+      <meta name="description" content="Це опис для головної сторінки" />
+    </Helmet>
+  );
+}
+```
+
+#### SSR(Next.js, Express);
+
+```jsx
+import { HelmetProvider, Helmet } from "react-helmet-async";
+
+const helmetContext = {};
+const html = renderToString(
+  <HelmetProvider context={helmetContext}>
+    <App />
+  </HelmetProvider>
+);
+const { helmet } = helmetContext;
+
+const finalHtml = `
+
+  <html>
+    <head>
+      ${helmet.title.toString()}
+      ${helmet.meta.toString()}
+    </head>
+    <body>${html}</body>
+  </html>
+`;
+```
+
+#### Чому краще за `react-helmet`?
+
+✅ Підтримує SSR без помилок асинхронності.
+✅ Легший та швидший.
+✅ Не створює проблем при `StrictMode`.
+
+- Висновок: **Якщо потрібен SEO у React + SSR, варто використовувати `react-helmet-async`**.
+
+</details>
+
+<details>
+<summary>106. ???</summary>
 
 #### React
 
