@@ -5789,7 +5789,215 @@ const finalHtml = `
 </details>
 
 <details>
-<summary>106. ???</summary>
+<summary>106. Які варіанти реалізації drag-and-drop у React ти знаєш?</summary>
+
+#### React
+
+- Drag-and-drop у React можна реалізувати кількома способами:
+
+  - **Використання HTML5 API** (`onDragStart`, `onDrop`)
+
+  - **Бібліотеки** (`react-dnd`, `dnd-kit`)
+
+1. **Використання нативного Drag-and-Drop API**
+
+```jsx
+import { useState } from "react";
+
+function DragAndDrop() {
+  const [items, setItems] = useState(["Item 1", "Item 2", "Item 3"]);
+
+  const onDragStart = (e, index) => {
+    e.dataTransfer.setData("text/plain", index);
+  };
+
+  const onDrop = (e, targetIndex) => {
+    const sourceIndex = e.dataTransfer.getData("text/plain");
+    const newItems = [...items];
+    const [movedItem] = newItems.splice(sourceIndex, 1);
+    newItems.splice(targetIndex, 0, movedItem);
+    setItems(newItems);
+  };
+
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <li
+          key={index}
+          draggable
+          onDragStart={(e) => onDragStart(e, index)}
+          onDragOver={(e) => e.preventDefault()}
+          onDrop={(e) => onDrop(e, index)}
+          style={{ padding: "10px", border: "1px solid black", margin: "5px" }}
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default DragAndDrop;
+```
+
+✅ Простий, без сторонніх бібліотек.
+❌ Обмежений контроль, не підтримує складні кейси.
+
+2. **Використання `react-dnd` (потужніший варіант)**
+
+```bash
+   npm install react-dnd react-dnd-html5-backend
+```
+
+```jsx
+import { DndProvider, useDrag, useDrop } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import { useState } from "react";
+
+const ItemType = "ITEM";
+
+function DraggableItem({ item, index, moveItem }) {
+  const [{ isDragging }, drag] = useDrag({
+    type: ItemType,
+    item: { index },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
+  const [, drop] = useDrop({
+    accept: ItemType,
+    hover: (draggedItem) => {
+      if (draggedItem.index !== index) {
+        moveItem(draggedItem.index, index);
+        draggedItem.index = index;
+      }
+    },
+  });
+
+  return (
+    <div
+      ref={(node) => drag(drop(node))}
+      style={{
+        padding: "10px",
+        margin: "5px",
+        border: "1px solid black",
+        backgroundColor: isDragging ? "lightgray" : "white",
+      }}
+    >
+      {item}
+    </div>
+  );
+}
+
+function DragAndDrop() {
+  const [items, setItems] = useState(["Item 1", "Item 2", "Item 3"]);
+
+  const moveItem = (from, to) => {
+    const updatedItems = [...items];
+    const [movedItem] = updatedItems.splice(from, 1);
+    updatedItems.splice(to, 0, movedItem);
+    setItems(updatedItems);
+  };
+
+  return (
+    <DndProvider backend={HTML5Backend}>
+      {items.map((item, index) => (
+        <DraggableItem
+          key={index}
+          item={item}
+          index={index}
+          moveItem={moveItem}
+        />
+      ))}
+    </DndProvider>
+  );
+}
+
+export default DragAndDrop;
+```
+
+✅ Гнучкий, підтримує складні кейси.
+✅ Легше працювати з вкладеними елементами.
+❌ Додає залежність.
+
+3. **Використання `dnd-kit` (простий та сучасний варіант)**
+
+```bash
+   npm install @dnd-kit/core @dnd-kit/sortable
+```
+
+```jsx
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import { SortableContext, useSortable, arrayMove } from "@dnd-kit/sortable";
+import { useState } from "react";
+
+function SortableItem({ id }) {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id });
+
+  return (
+    <div
+      ref={setNodeRef}
+      {...attributes}
+      {...listeners}
+      style={{
+        padding: "10px",
+        margin: "5px",
+        border: "1px solid black",
+        backgroundColor: "white",
+        transform: transform ? `translateY(${transform.y}px)` : undefined,
+        transition,
+      }}
+    >
+      {id}
+    </div>
+  );
+}
+
+function DragAndDrop() {
+  const [items, setItems] = useState(["Item 1", "Item 2", "Item 3"]);
+
+  const onDragEnd = ({ active, over }) => {
+    if (active.id !== over.id) {
+      setItems((items) => {
+        const oldIndex = items.indexOf(active.id);
+        const newIndex = items.indexOf(over.id);
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+  };
+
+  return (
+    <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+      <SortableContext items={items}>
+        {items.map((id) => (
+          <SortableItem key={id} id={id} />
+        ))}
+      </SortableContext>
+    </DndContext>
+  );
+}
+
+export default DragAndDrop;
+```
+
+✅ Сучасний API, легший за react-dnd.
+✅ Простий у використанні.
+✅ Підтримує сортування (sortable).
+
+#### Висновок:
+
+- Якщо потрібно щось просте → **HTML5 Drag-and-Drop API.**
+
+- Якщо потрібен гнучкий контроль → **react-dnd.**
+
+- Якщо хочеш сучасний, легкий варіант → **dnd-kit.**
+
+</details>
+
+<details>
+<summary>107. ???</summary>
 
 #### React
 
