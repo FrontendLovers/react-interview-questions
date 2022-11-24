@@ -4796,7 +4796,90 @@ register();
 </details>
 
 <details>
-<summary>83. ???</summary>
+<summary>83. Як передавати пропси в React Router?</summary>
+
+#### React
+
+- Щоб передати пропси в компоненти при використанні **React Router**, є кілька підходів:
+
+1. **Використання компоненту Route для передачі пропсів:**
+
+- Можна передавати пропси через компонент **Route** за допомогою `render` або `children`.
+
+#### Приклад:
+
+```jsx
+import { Route } from "react-router-dom";
+
+<Route
+  path="/profile"
+  render={(props) => <Profile {...props} user="John" />}
+/>;
+```
+
+- Тут ми передаємо додаткові пропси до компонента `Profile`.
+
+2. **Використання useNavigate() для передачі даних через навігацію (за допомогою state):**
+
+- При переході на нову сторінку можна передавати пропси через `state`.
+
+#### Приклад:
+
+```jsx
+import { useNavigate } from "react-router-dom";
+
+function Home() {
+  const navigate = useNavigate();
+
+  function goToProfile() {
+    navigate("/profile", { state: { user: "John" } });
+  }
+
+  return <button onClick={goToProfile}>Go to Profile</button>;
+}
+```
+
+#### Отримання пропсів у компоненті:
+
+```jsx
+import { useLocation } from "react-router-dom";
+
+function Profile() {
+  const location = useLocation();
+  const user = location.state?.user;
+
+  return <div>Welcome, {user}</div>;
+}
+```
+
+3. **Використання useParams() для доступу до параметрів маршруту:**
+
+- Якщо потрібно передати параметри через URL, можна використовувати `useParams()`.
+
+#### Приклад:
+
+```jsx
+import { useParams } from "react-router-dom";
+
+function Profile() {
+  const { id } = useParams();
+
+  return <div>User ID: {id}</div>;
+}
+```
+
+#### Висновок:
+
+- `render` або `children` підходять для передачі пропсів безпосередньо.
+
+- `useNavigate()` та `state` дозволяють передавати дані між сторінками.
+
+- `useParams()` зручний для динамічних параметрів в URL.
+
+</details>
+
+<details>
+<summary>84. ???</summary>
 
 #### React
 
