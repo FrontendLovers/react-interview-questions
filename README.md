@@ -4704,9 +4704,56 @@ function MyComponent() {
 </details>
 
 <details>
-<summary>80. ???</summary>
+<summary>80. Навіщо setState() потрібно передавати функцію?</summary>
+
+#### React
+
+- Передача функції в `setState()` потрібна, коли новий стан залежить від попереднього. Це гарантує правильне оновлення, оскільки `setState()` виконується асинхронно і може групувати виклики.
+
+#### Приклад з проблемою:
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount(count + 1);
+    setCount(count + 1);
+  }
+
+  return <button onClick={increment}>{count}</button>;
+}
+```
+
+- Тут `count + 1` обчислюється двічі з тим самим старим `count`, тому кнопка збільшуватиме значення лише на 1, а не на 2.
+
+#### Правильний підхід:
+
+```jsx
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function increment() {
+    setCount((prevCount) => prevCount + 1);
+    setCount((prevCount) => prevCount + 1);
+  }
+
+  return <button onClick={increment}>{count}</button>;
+}
+```
+
+- Тут `setCount()` отримує актуальне значення `prevCount`, тому інкремент працює коректно, збільшуючи значення на 2.
+
+</details>
+
+<details>
+<summary>81. ???</summary>
 
 #### React
 
 - Coming Soon... 😎
 </details>
+
+```
+
+```
