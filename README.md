@@ -4566,7 +4566,122 @@ function App() {
 </details>
 
 <details>
-<summary>78. ???</summary>
+<summary>78. Розкажіть про хуки useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect()?</summary>
+
+#### React
+
+#### useCallback()
+
+- Мемоізує функцію, щоб вона не створювалася заново при кожному рендері. Корисно для передачі колбеків у дочірні компоненти.
+
+- **Приклад:**
+
+```jsx
+import { useCallback } from "react";
+
+function MyComponent({ onClick }) {
+  return <button onClick={onClick}>Натисни</button>;
+}
+
+function Parent() {
+  const handleClick = useCallback(() => {
+    console.log("Клік");
+  }, []); // Функція створюється один раз
+
+  return <MyComponent onClick={handleClick} />;
+}
+```
+
+#### useMemo()
+
+- Мемоізує обчислення, щоб не виконувати їх повторно при кожному рендері, якщо залежності не змінилися.
+
+- **Приклад:**
+
+```jsx
+import { useMemo } from "react";
+
+function ExpensiveCalculation({ num }) {
+const result = useMemo(() => {
+console.log("Обчислення...");
+return num \* 2;
+}, [num]); // Виконується лише при зміні num
+
+return <div>Результат: {result}</div>;
+}
+```
+
+#### useImperativeHandle()
+
+- Дозволяє керувати поведінкою ref у дочірньому компоненті. Використовується разом із forwardRef().
+
+- **Приклад:**
+
+```jsx
+import { useRef, useImperativeHandle, forwardRef } from "react";
+
+const CustomInput = forwardRef((props, ref) => {
+  const inputRef = useRef();
+
+  useImperativeHandle(ref, () => ({
+    focus: () => inputRef.current.focus(),
+    clear: () => (inputRef.current.value = ""),
+  }));
+
+  return <input ref={inputRef} {...props} />;
+});
+
+function Parent() {
+  const inputRef = useRef();
+
+  return (
+    <div>
+      <CustomInput ref={inputRef} />
+      <button onClick={() => inputRef.current.focus()}>Фокус</button>
+      <button onClick={() => inputRef.current.clear()}>Очистити</button>
+    </div>
+  );
+}
+```
+
+#### useLayoutEffect()
+
+- Працює як `useEffect()`, але виконується синхронно після змін в DOM. Корисно для вимірювання або маніпуляцій з DOM перед тим, як браузер малює сторінку.
+
+- **Приклад:**
+
+```jsx
+import { useLayoutEffect, useRef } from "react";
+
+function LayoutEffectExample() {
+  const divRef = useRef();
+
+  useLayoutEffect(() => {
+    console.log("Ширина елемента:", divRef.current.offsetWidth);
+  }, []);
+
+  return (
+    <div ref={divRef} style={{ width: "200px", height: "100px" }}>
+      Елемент
+    </div>
+  );
+}
+```
+
+#### Коли який хук використовувати?
+
+- `useCallback()` — для запам’ятовування функцій.
+
+- `useMemo()` — для запам’ятовування обчислень.
+
+- `useImperativeHandle()` — для керування ref дочірнього компонента.
+
+- `useLayoutEffect()` — коли треба щось зробити перед відображенням змін в DOM (наприклад, вимірювання).
+
+</details>
+
+<details>
+<summary>79. ???</summary>
 
 #### React
 
