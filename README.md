@@ -4681,7 +4681,30 @@ function LayoutEffectExample() {
 </details>
 
 <details>
-<summary>79. ???</summary>
+<summary>79. Як відрендерити HTML код у React-компоненті?</summary>
+
+#### React
+
+- Використовуй `dangerouslySetInnerHTML`, але будь обережний — це може призвести до XSS-атак, якщо вставляєш несанітизовані дані.
+
+#### Приклад:
+
+```jsx
+Копіювати;
+Редагувати;
+function MyComponent() {
+  const htmlContent = "<p style='color: red;'>Це HTML-код</p>";
+
+  return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+}
+```
+
+- Якщо працюєш з динамічними даними, обов’язково санітизуй їх перед вставкою.
+
+</details>
+
+<details>
+<summary>80. ???</summary>
 
 #### React
 
