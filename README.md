@@ -4495,7 +4495,78 @@ useEffect(() => {
 </details>
 
 <details>
-<summary>77. ???</summary>
+<summary>77. Що таке розподілений компонент (Distributed Component)?</summary>
+
+#### React
+
+- **Розподілений компонент (Distributed Component)** — це концепція, коли компонент розбивається на кілька незалежних частин, що можуть рендеритися або виконувати логіку окремо, але працюють разом.
+
+#### Приклади реалізації:
+
+1. **Код-сплітинг (Code Splitting)**
+
+- Компоненти вантажаться лише при необхідності, що зменшує початковий розмір бандла.
+
+```jsx
+import { lazy, Suspense } from "react";
+
+const LazyComponent = lazy(() => import("./LazyComponent"));
+
+function App() {
+  return (
+    <Suspense fallback={<div>Завантаження...</div>}>
+      <LazyComponent />
+    </Suspense>
+  );
+}
+```
+
+2. **Компоненти-контейнери (Container-Presentational Pattern)**
+
+- Виділяє логіку (контейнер) та відображення (презентаційний компонент).
+
+```jsx
+function DataContainer({ children }) {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/data")
+      .then((res) => res.json())
+      .then(setData);
+  }, []);
+
+  return children(data);
+}
+
+function Presentational({ data }) {
+  return <div>{data ? JSON.stringify(data) : "Завантаження..."}</div>;
+}
+
+function App() {
+  return (
+    <DataContainer>{(data) => <Presentational data={data} />}</DataContainer>
+  );
+}
+```
+
+3. **Мікрофронтенди (Micro Frontends)**
+
+- Використання окремих автономних компонентів у різних частинах застосунку.
+
+  - Наприклад, різні команди розробляють окремі частини великого проєкту (`React`, `Vue`, `Angular`) і інтегрують їх разом.
+
+#### Коли використовувати:
+
+- Для оптимізації продуктивності (ліниве завантаження).
+
+- Щоб спростити підтримку коду (відокремлення логіки).
+
+- Для масштабованих застосунків (мікрофронтенди).
+
+</details>
+
+<details>
+<summary>78. ???</summary>
 
 #### React
 
