@@ -4394,7 +4394,67 @@ class MyComponent extends React.Component {
 </details>
 
 <details>
-<summary>75. ???</summary>
+<summary>75. Що таке useReducer()?</summary>
+
+#### React
+
+- `useReducer()` — це хук у React, який використовується для управління станом у функціональних компонентах. Це альтернатива `useState()`, яка підходить для складних логік оновлення стану, особливо якщо зміни залежать від попереднього стану.
+
+#### Синтаксис:
+
+```jsx
+const [state, dispatch] = useReducer(reducer, initialState);
+```
+
+- `reducer` — функція, яка приймає `state` і `action`, повертаючи новий стан.
+
+- `initialState` — початковий стан.
+
+- `dispatch` — функція для виклику редюсера з певною `action`.
+
+#### Приклад:
+
+```jsx
+import { useReducer } from "react";
+
+const initialState = { count: 0 };
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      <p>Count: {state.count}</p>
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+    </div>
+  );
+}
+```
+
+#### Коли використовувати:
+
+- Коли стан має складну логіку або залежності.
+
+- Коли необхідно уніфікувати оновлення стану через dispatch.
+
+- Для масштабованості, наприклад, при використанні в глобальному стані.
+
+</details>
+
+<details>
+<summary>76. ???</summary>
 
 #### React
 
