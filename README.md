@@ -4359,7 +4359,42 @@ export default TwoWayBinding;
 </details>
 
 <details>
-<summary>74. ???</summary>
+<summary>74. Що робить метод, що shouldComponentUpdate?</summary>
+
+#### React
+
+- `shouldComponentUpdate` – це метод життєвого циклу у класових компонентах, який визначає, чи потрібно повторно рендерити компонент.
+
+#### Як працює:
+
+- За замовчуванням повертає `true`, що означає ререндер при будь-якій зміні `state` або `props`.
+
+- Якщо повертає `false`, React не буде ререндерити компонент, навіть якщо props або `state` змінилися.
+
+#### Приклад використання:
+
+```jsx
+class MyComponent extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextProps.value !== this.props.value; // Ререндер тільки при зміні value
+  }
+
+  render() {
+    return <div>{this.props.value}</div>;
+  }
+}
+```
+
+#### Альтернатива у функціональних компонентах:
+
+- Використовуй `React.memo()` для мемоізації.
+
+- `useMemo()` і `useCallback()` допомагають оптимізувати ререндери.
+
+</details>
+
+<details>
+<summary>75. ???</summary>
 
 #### React
 
