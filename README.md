@@ -4271,7 +4271,49 @@ class Parent {
 </details>
 
 <details>
-<summary>70. ???</summary>
+<summary>70. Як у React реалізувати двостороннє зв'язування даних?</summary>
+
+#### React
+
+- У React двостороннє зв’язування даних реалізується через **керовані компоненти** (controlled components), де стан (`state`) компонента синхронізується з полем вводу (`input`).
+
+#### Приклад реалізації
+
+```jsx
+import { useState } from "react";
+
+const TwoWayBinding = () => {
+  const [value, setValue] = useState("");
+
+  return (
+    <div>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <p>Введене значення: {value}</p>
+    </div>
+  );
+};
+
+export default TwoWayBinding;
+```
+
+#### Як це працює?
+
+1. `value` зберігає поточний стан введеного значення.
+
+2. `onChange` оновлює стан при зміні `input`.
+
+3. Оновлений `value` відображається в інтерфейсі, забезпечуючи двосторонній зв’язок.
+
+- Цей підхід дозволяє контролювати введені дані, робити валідацію та обробку перед оновленням стану.
+
+</details>
+
+<details>
+<summary>71. ???</summary>
 
 #### React
 
