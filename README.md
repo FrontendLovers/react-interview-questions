@@ -4076,7 +4076,68 @@ root.render(
 </details>
 
 <details>
-<summary>66. ???</summary>
+<summary>66. Що таке буріння пропсів (Prop Drilling)? Як його уникнути?</summary>
+
+#### React
+
+- **Prop Drilling** — це передача пропсів через кілька рівнів вкладених компонентів, навіть якщо вони потрібні лише в дочірньому компоненті глибше в ієрархії. Це ускладнює підтримку коду та робить його менш читабельним.
+
+- **Приклад Prop Drilling:**
+
+```jsx
+const Parent = () => {
+  const user = { name: "John" };
+  return <Child user={user} />;
+};
+
+const Child = ({ user }) => {
+  return <GrandChild user={user} />;
+};
+
+const GrandChild = ({ user }) => {
+  return <p>Ім'я: {user.name}</p>;
+};
+```
+
+- Тут `user` передається через `Child`, хоча він йому не потрібен — це і є **_буріння пропсів_**.
+
+#### Як уникнути Prop Drilling?
+
+| **Метод**                                           | **Опис**                                                                |
+| --------------------------------------------------- | ----------------------------------------------------------------------- |
+| **Context API**                                     | Дозволяє передавати дані безпосередньо потрібним компонентам.           |
+| **Зовнішні стейти (Redux, Zustand, Jotai, Recoil)** | Використовуються для управління глобальним станом без передачі пропсів. |
+| **Компоненти з рендер-пропсами (Render Props)**     | Дозволяють передавати функції замість пропсів.                          |
+| **Custom Hooks**                                    | Виносять логіку в окремі функції для доступу до загальних даних.        |
+
+#### Приклад використання Context API замість Prop Drilling
+
+```jsx
+import { createContext, useContext } from "react";
+
+const UserContext = createContext();
+
+const Parent = () => {
+  const user = { name: "John" };
+  return (
+    <UserContext.Provider value={user}>
+      <GrandChild />
+    </UserContext.Provider>
+  );
+};
+
+const GrandChild = () => {
+  const user = useContext(UserContext);
+  return <p>Ім'я: {user.name}</p>;
+};
+```
+
+- Тут `user` доступний напряму у `GrandChild`, без зайвої передачі через `Child`.
+
+</details>
+
+<details>
+<summary>67. ???</summary>
 
 #### React
 
