@@ -664,7 +664,7 @@ class Greeting extends React.Component {
 </details>
 
 <details>
-<summary>16. Що таке чисті компоненти?</summary>
+<summary>16. Що таке чисті компоненти (Pure Components)?</summary>
 
 #### React
 
@@ -722,7 +722,7 @@ const MyComponent = React.memo(function MyComponent(props) {
 </details>
 
 <details>
-<summary>17. Що таке стан у React?</summary>
+<summary>17. Що таке стан (state) у React?</summary>
 
 #### React
 
@@ -786,7 +786,93 @@ function Counter() {
 </details>
 
 <details>
-<summary>18. ???</summary>
+<summary>18. Що таке пропси (props) в React?</summary>
+
+#### React
+
+- **Пропси (props)** в React — це об'єкт, який містить дані, що передаються від батьківського компонента до дочірнього. Вони використовуються для налаштування компонентів і є незмінними (immutable).
+
+#### Особливості пропсів:
+
+1. **Передаються зверху вниз** (унідіrectional data flow) — від батьківського компонента до дочірнього.
+
+2. **Незмінні** — компонент не може змінювати отримані пропси.
+
+3. **Динамічні** — значення пропсів можуть змінюватися, якщо змінюються дані в батьківському компоненті.
+
+#### Використання пропсів:
+
+1. **У функціональному компоненті:**
+
+```jsx
+function Welcome(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+
+// Використання:
+<Welcome name="John" />;
+```
+
+2. **У класовому компоненті:**
+
+```jsx
+Копіювати;
+Редагувати;
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}!</h1>;
+  }
+}
+
+// Використання:
+<Welcome name="Jane" />;
+```
+
+#### Передача пропсів:
+
+```jsx
+function App() {
+  return (
+    <div>
+      <Welcome name="Alice" />
+      <Welcome name="Bob" />
+    </div>
+  );
+}
+```
+
+- Результат:
+
+```
+Hello, Alice!
+Hello, Bob!
+```
+
+#### Деструктуризація пропсів:
+
+```jsx
+function Welcome({ name }) {
+  return <h1>Hello, {name}!</h1>;
+}
+```
+
+#### Значення пропсів за замовчуванням:
+
+```jsx
+function Welcome({ name = "Guest" }) {
+  return <h1>Hello, {name}!</h1>;
+}
+
+// Використання:
+<Welcome />; // Виведе: Hello, Guest!
+```
+
+- Пропси забезпечують компонентам React гнучкість і можливість повторного використання.
+
+</details>
+
+<details>
+<summary>19. ???</summary>
 
 #### React
 
