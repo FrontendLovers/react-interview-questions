@@ -722,7 +722,71 @@ const MyComponent = React.memo(function MyComponent(props) {
 </details>
 
 <details>
-<summary>17. ???</summary>
+<summary>17. Що таке стан у React?</summary>
+
+#### React
+
+- **Стан (state)** у React — це об'єкт, який використовується для зберігання даних, що можуть змінюватися з часом, і впливають на рендеринг компонента. Стан дозволяє компонентам React бути динамічними і реагувати на події, введення користувача тощо.
+
+#### Особливості стану:
+
+1. **Локальний для компонента:** Стан доступний тільки в тому компоненті, де він визначений.
+
+2. **Змінюється асинхронно:** React об'єднує виклики setState для оптимізації рендерингу.
+
+3. **Ініціалізується в конструкторі** (для класових компонентів) або через useState (у функціональних компонентах).
+
+#### У класових компонентах:
+
+```jsx
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.increment}>Increment</button>
+      </div>
+    );
+  }
+}
+```
+
+#### У функціональних компонентах (з хуком `useState`):
+
+```jsx
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+#### Основні відмінності між станом і пропсами:
+
+- **State** — локальний для компонента і може змінюватися.
+
+- **Props** — передаються зовні і є незмінними (immutable).
+
+</details>
+
+<details>
+<summary>18. ???</summary>
 
 #### React
 
