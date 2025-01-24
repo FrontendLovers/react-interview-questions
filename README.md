@@ -1,6 +1,8 @@
-# React
+<h1>
+  React <img src="./assets/react.svg" width="40" height="40" />
+</h1>
 
-## Найпопулярніші запитання та відповіді на співбесіді з React
+<h2>Найпопулярніші запитання та відповіді на співбесіді з React</h2>
 
 <details>
 <summary>1. Що таке React?</summary>
