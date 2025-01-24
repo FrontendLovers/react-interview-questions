@@ -1413,7 +1413,100 @@ function UserStatus(props) {
 </details>
 
 <details>
-<summary>28. ???</summary>
+<summary>28. Як передаються дані між компонентами у React</summary>
+
+#### React
+
+- У React дані передаються між компонентами за ієрархією наступним чином:
+
+#### Передача даних вниз (від батьківського компонента до дочірнього)
+
+- Для передачі даних вниз використовується props. Батьківський компонент передає значення або функції через атрибути дочірньому компоненту.
+
+- **Приклад:**
+
+```jsx
+function ParentComponent() {
+  const data = "Hello from Parent";
+
+  return <ChildComponent message={data} />;
+}
+
+function ChildComponent({ message }) {
+  return <p>{message}</p>;
+}
+```
+
+- `message` передає значення `data` в дочірній компонент `ChildComponent`.
+
+- У дочірньому компоненті доступ до пропсів відбувається через параметр функції або `this.props` у класовому компоненті.
+
+#### Передача даних вгору (від дочірнього компонента до батьківського)
+
+- Дані передаються вгору за допомогою callback-функцій. Батьківський компонент передає функцію дочірньому, а той викликає її з потрібними даними.
+
+- **Приклад:**
+
+```jsx
+function ParentComponent() {
+  const handleData = (childData) => {
+    console.log("Data from child:", childData);
+  };
+
+  return <ChildComponent sendData={handleData} />;
+}
+
+function ChildComponent({ sendData }) {
+  const data = "Hello from Child";
+
+  return <button onClick={() => sendData(data)}>Send Data</button>;
+}
+```
+
+- Батьківський компонент передає функцію `handleData` в пропс `sendData`.
+
+- Дочірній компонент викликає `sendData`, передаючи значення `data`.
+
+#### Альтернативні підходи для складних додатків:
+
+1. **Контекст (Context API):**
+
+- Для передачі даних глибоко по ієрархії без пропсів.
+
+- Підходить для глобального стану, наприклад, теми чи мови інтерфейсу.
+
+```jsx
+const MyContext = React.createContext();
+
+function ParentComponent() {
+  const data = "Hello from Context";
+
+  return (
+    <MyContext.Provider value={data}>
+      <ChildComponent />
+    </MyContext.Provider>
+  );
+}
+
+function ChildComponent() {
+  const contextData = React.useContext(MyContext);
+
+  return <p>{contextData}</p>;
+}
+```
+
+2. **Менеджери стану (Redux, Zustand, MobX):**
+
+- Для передачі даних у великих додатках через єдиний глобальний стан.
+
+3. **Custom Hooks:**
+
+- Використовується для спільного використання логіки між компонентами.
+
+</details>
+
+<details>
+<summary>29. ???</summary>
 
 #### React
 
