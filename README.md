@@ -978,7 +978,80 @@ function App() {
 </details>
 
 <details>
-<summary>22. ???</summary>
+<summary>22. Як оновити стан компонента?</summary>
+
+#### React
+
+- У React стан компонента оновлюється за допомогою методу `setState` у класових компонентах або `useState` у функціональних компонентах.
+
+#### Класові компоненти:
+
+- Стан оновлюється через `this.setState()`.
+
+- **_Приклад:_**
+
+```jsx
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.increment}>Increment</button>
+      </div>
+    );
+  }
+}
+```
+
+#### Функціональні компоненти:
+
+- Стан оновлюється через функцію, отриману з `useState`.
+
+- **_Приклад:_**
+
+```jsx
+import React, { useState } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+```
+
+#### Примітки:
+
+1. **Асинхронність:** `setState` і `useState` працюють асинхронно. Для оновлення стану на основі попереднього значення використовуйте функціональний підхід:
+
+```jsx
+this.setState((prevState) => ({ count: prevState.count + 1 }));
+setCount((prevCount) => prevCount + 1);
+```
+
+2. **Не оновлюйте стан напряму:** Модифікація стану без використання `setState` або `useState` не викликає повторний рендеринг.
+
+</details>
+
+<details>
+<summary>23. ???</summary>
 
 #### React
 
