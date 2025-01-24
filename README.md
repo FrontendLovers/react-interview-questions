@@ -1506,7 +1506,100 @@ function ChildComponent() {
 </details>
 
 <details>
-<summary>29. ???</summary>
+<summary>29. Що таке контрольовані компоненти (Controlled Components)?</summary>
+
+#### React
+
+#### Контрольовані компоненти (Controlled Components) в React
+
+- Контрольовані компоненти — це компоненти, в яких **React контролює стан форми** через `state`. Значення полів форми (наприклад, `<input>`, `<textarea>`, `<select>`) прив'язуються до стану компонента, і зміни обробляються через події.
+
+- **Як це працює:**
+
+1. Компонент зберігає значення форми у своєму `state`.
+
+2. Зміни значення полів форми обробляються через подію `onChange`.
+
+3. Значення форми оновлюється, використовуючи `setState`.
+
+- **_Приклад:_**
+
+```jsx
+import React, { useState } from "react";
+
+function ControlledForm() {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value); // Оновлюємо стан
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Submitted value:", inputValue);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Enter text:
+        <input
+          type="text"
+          value={inputValue} // Значення контролюється state
+          onChange={handleChange} // Обробка змін
+        />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+export default ControlledForm;
+```
+
+#### Основні переваги:
+
+1. **Одне джерело істини:** Значення форми синхронізоване зі станом компонента.
+
+2. **Гнучкість:** Легко валідовувати та модифікувати дані форми.
+
+3. **Прозорість:** Стан форми зрозумілий та передбачуваний.
+
+#### Відмінності від неконтрольованих компонентів:
+
+- У контрольованих компонентах значення форми контролюється React через `state`.
+
+- У неконтрольованих компонентах значення зберігається в самому DOM, і доступ до нього здійснюється через `ref`.
+
+- **_Неконтрольований приклад для порівняння:_**
+
+```jsx
+function UncontrolledForm() {
+  const inputRef = React.useRef();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Submitted value:", inputRef.current.value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Enter text:
+        <input type="text" ref={inputRef} />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+```
+
+- Контрольовані компоненти надають кращий контроль та передбачуваність у роботі з формами.
+
+</details>
+
+<details>
+<summary>30. ???</summary>
 
 #### React
 
