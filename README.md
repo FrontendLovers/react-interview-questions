@@ -1599,7 +1599,216 @@ function UncontrolledForm() {
 </details>
 
 <details>
-<summary>30. ???</summary>
+<summary>30. Які підходи використовуються для виконання HTTP-запитів у React?</summary>
+
+#### React
+
+#### Підходи для виконання HTTP-запитів у React
+
+- React не має вбудованого API для виконання HTTP-запитів, але ви можете використовувати сторонні бібліотеки або стандартні засоби JavaScript. Ось основні підходи:
+
+1. **Використання Fetch API**
+
+- Стандартний інструмент для виконання HTTP-запитів у JavaScript.
+
+- **_Приклад:_**
+
+```jsx
+import React, { useEffect, useState } from "react";
+
+function FetchExample() {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => setData(data))
+      .catch((error) => setError(error.message));
+  }, []);
+
+  return (
+    <div>
+      {error ? (
+        <p>Error: {error}</p>
+      ) : (
+        <ul>
+          {data.map((post) => (
+            <li key={post.id}>{post.title}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default FetchExample;
+```
+
+2. **Використання Axios**
+
+- Бібліотека для виконання HTTP-запитів з простішим синтаксисом та вбудованою підтримкою проміжних обробників (interceptors).
+
+- **_Приклад:_**
+
+```jsx
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+function AxiosExample() {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => setData(response.data))
+      .catch((error) => setError(error.message));
+  }, []);
+
+  return (
+    <div>
+      {error ? (
+        <p>Error: {error}</p>
+      ) : (
+        <ul>
+          {data.map((post) => (
+            <li key={post.id}>{post.title}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default AxiosExample;
+```
+
+3. **React Query (TanStack Query)**
+
+- Бібліотека для управління станом даних, отриманих через HTTP-запити. Підтримує кешування, повторні спроби та оновлення даних.
+
+- **_Приклад:_**
+
+```jsx
+import React from "react";
+import { useQuery } from "react-query";
+import axios from "axios";
+
+function ReactQueryExample() {
+  const { data, error, isLoading } = useQuery("posts", async () => {
+    const response = await axios.get(
+      "https://jsonplaceholder.typicode.com/posts"
+    );
+    return response.data;
+  });
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  return (
+    <ul>
+      {data.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+
+export default ReactQueryExample;
+```
+
+4. **GraphQL (Apollo Client)**
+
+- Для роботи з GraphQL API використовується Apollo Client.
+
+- **_Приклад:_**
+
+```jsx
+import React from "react";
+import { useQuery, gql } from "@apollo/client";
+
+const GET_POSTS = gql`
+  query GetPosts {
+    posts {
+      id
+      title
+    }
+  }
+`;
+
+function ApolloExample() {
+  const { loading, error, data } = useQuery(GET_POSTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  return (
+    <ul>
+      {data.posts.map((post) => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+
+export default ApolloExample;
+```
+
+5. **Custom Hooks**
+
+- Ви можете створювати власні хуки для повторного використання логіки запитів.
+
+- **_Приклад:_**
+
+```jsx
+import { useState, useEffect } from "react";
+
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setLoading(false);
+      });
+  }, [url]);
+
+  return { data, error, loading };
+}
+
+export default useFetch;
+```
+
+#### Вибір підходу залежить від ваших потреб:
+
+- **Fetch API:** для простих запитів.
+
+- **Axios:** якщо потрібна більша гнучкість (interceptors, тайм-аути).
+
+- **React Query:** для управління кешем даних.
+
+- **GraphQL/Apollo Client:** якщо API побудоване на GraphQL.
+
+- **Custom Hooks:** для повторного використання логіки запитів.
+
+</details>
+
+<details>
+<summary>31. ???</summary>
 
 #### React
 
