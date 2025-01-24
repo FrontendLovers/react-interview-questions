@@ -1121,7 +1121,107 @@ function App() {
 </details>
 
 <details>
-<summary>24. ???</summary>
+<summary>24. Як обробляти події в React?</summary>
+
+#### React
+
+- В React обробка подій працює схоже на стандартний JavaScript, але з деякими відмінностями. Події в React є синтетичними, що означає, що вони мають абстракцію поверх реальних подій браузера, що забезпечує крос-браузерну сумісність.
+
+#### Основні принципи обробки подій в React:
+
+1. **Синтетичні події:** Всі події в React обгорнуті в об'єкт **SyntheticEvent**, який є крос-браузерною реалізацією стандартних подій DOM. Це дозволяє обробляти події однаково в усіх браузерах.
+
+2. **Використання camelCase для подій:** У React події записуються у форматі camelCase замість стандартного нижнього регістру (наприклад, `onClick` замість `onclick`).
+
+3. **Передача функцій як обробників подій:** Події в React обробляються за допомогою функцій, які передаються через атрибути компонентів.
+
+#### Приклад обробки події `click`:
+
+```jsx
+import React, { Component } from "react";
+
+class MyButton extends Component {
+  handleClick = () => {
+    alert("Button clicked!");
+  };
+
+  render() {
+    return <button onClick={this.handleClick}>Click Me</button>;
+  }
+}
+
+export default MyButton;
+```
+
+#### Приклад з функціональним компонентом:
+
+```jsx
+import React, { useState } from "react";
+
+function MyButton() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
+  return <button onClick={handleClick}>Clicked {count} times</button>;
+}
+
+export default MyButton;
+```
+
+#### Особливості обробки подій:
+
+1. **Не потрібно використовувати `addEventListener`:** В React немає необхідності вручну додавати або видаляти обробники подій. Це автоматично керується бібліотекою React.
+
+2. **Збереження контексту в методах класових компонентів:** Якщо методи класових компонентів використовуються як обробники подій, контекст (`this`) потрібно прив'язати або через стрілкові функції, або вручну в конструкторі.
+
+```jsx
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+    // Прив'язка методу
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        Clicked {this.state.count} times
+      </button>
+    );
+  }
+}
+```
+
+3. **Передача параметрів у функцію обробника:** Якщо потрібно передати додаткові аргументи в обробник події, можна використовувати стрілкові функції або функції з параметрами.
+
+```jsx
+function MyButton({ label }) {
+  const handleClick = (event, label) => {
+    console.log(label);
+  };
+
+  return (
+    <button onClick={(event) => handleClick(event, label)}>{label}</button>
+  );
+}
+```
+
+#### Обробка подій в DOM:
+
+- Всі події, що відбуваються в React, працюють за принципом делегування подій, де один обробник подій реєструється для всього дерева компонентів і пропускається через React SyntheticEvent.
+
+</details>
+
+<details>
+<summary>25. ???</summary>
 
 #### React
 
