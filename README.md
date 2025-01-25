@@ -1808,7 +1808,7 @@ export default useFetch;
 </details>
 
 <details>
-<summary>31. ???</summary>
+<summary>31. Що таке неконтрольовані компоненти?</summary>
 
 #### React
 
@@ -1876,7 +1876,159 @@ export default UncontrolledForm;
 </details>
 
 <details>
-<summary>32. ???</summary>
+<summary>32. Способи стилізації в React-компонентах?</summary>
+
+#### React
+
+#### Способи використання стилів у React-компонентах:
+
+1. **Inline-стилі** Стилі передаються безпосередньо у вигляді об’єкта через атрибут `style`.
+
+```jsx
+function InlineStyle() {
+  const style = {
+    color: "blue",
+    fontSize: "20px",
+  };
+
+  return <h1 style={style}>Привіт, React!</h1>;
+}
+```
+
+2. **CSS-файли** Використання звичайних CSS-файлів, які імпортуються в компонент.
+
+```jsx
+import "./styles.css";
+
+function CSSFile() {
+  return <h1 className="heading">Привіт, React!</h1>;
+}
+```
+
+```css
+Копіювати
+Редагувати
+/* styles.css */
+.heading {
+  color: blue;
+  font-size: 20px;
+}
+```
+
+3. **CSS-модулі** Створюють локально ізольовані стилі для кожного компонента.
+
+```jsx
+import styles from "./styles.module.css";
+
+function CSSModule() {
+  return <h1 className={styles.heading}>Привіт, React!</h1>;
+}
+```
+
+```css
+/* styles.module.css */
+.heading {
+  color: blue;
+  font-size: 20px;
+}
+```
+
+4. **Styled Components** Використання бібліотеки styled-components для написання стилів у JavaScript.
+
+```bash
+npm install styled-components
+```
+
+```jsx
+import styled from "styled-components";
+
+const Heading = styled.h1`
+  color: blue;
+  font-size: 20px;
+`;
+
+function StyledComponent() {
+  return <Heading>Привіт, React!</Heading>;
+}
+```
+
+5. **Emotion** Альтернативна бібліотека для стилізації, схожа на styled-components.
+
+```bash
+npm install @emotion/react @emotion/styled
+```
+
+```jsx
+/**_ @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
+const style = css`
+  color: blue;
+  font-size: 20px;
+`;
+
+function EmotionStyle() {
+  return <h1 css={style}>Привіт, React!</h1>;
+}
+```
+
+6. **CSS-in-JS** Створення динамічних стилів у звичайних JavaScript-файлах.
+
+```jsx
+function CSSInJS({ isBlue }) {
+  const style = {
+    color: isBlue ? "blue" : "red",
+    fontSize: "20px",
+  };
+
+  return <h1 style={style}>Привіт, React!</h1>;
+}
+```
+
+7. **Tailwind CSS** Фреймворк класів утиліт для стилізації компонентів.
+
+```jsx
+function TailwindExample() {
+  return <h1 className="text-blue-500 text-2xl">Привіт, React!</h1>;
+}
+```
+
+- **_Налаштування Tailwind CSS:_** додайте залежності та налаштуйте конфігурацію.
+
+8. **Sass/SCSS** Розширений CSS із підтримкою змінних, міксинів та вкладеності.
+
+```bash
+npm install sass
+```
+
+```jsx
+import "./styles.scss";
+
+function SCSSExample() {
+  return <h1 className="heading">Привіт, React!</h1>;
+}
+```
+
+```scss
+/* styles.scss */
+.heading {
+  color: blue;
+  font-size: 20px;
+}
+```
+
+#### Вибір способу залежить від:
+
+- Масштабності проекту.
+
+- Потреби в ізоляції стилів.
+
+- Переваг команди.
+
+</details>
+
+<details>
+<summary>33. ???</summary>
 
 #### React
 
