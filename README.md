@@ -1808,7 +1808,7 @@ export default useFetch;
 </details>
 
 <details>
-<summary>31. Що таке неконтрольовані компоненти?</summary>
+<summary>31. Що таке неконтрольовані компоненти (Uncontrolled Components)?</summary>
 
 #### React
 
@@ -2072,45 +2072,72 @@ const clonedElement = React.cloneElement(originalElement, {
 </details>
 
 <details>
-<summary>34. Що таке некеровані компоненти (Uncontrolled Components)?</summary>
+<summary>34. Що таке компоненти вищого порядку (Higher-Order components)?</summary>
 
 #### React
 
-- Некеровані компоненти (Uncontrolled Components) — це компоненти React, у яких значення введення керується самим DOM, а не React.
+#### Компоненти вищого порядку (Higher-Order Components, HOC)
 
-#### Основні особливості:
+- Компонент вищого порядку — це функція, яка приймає компонент як вхідний аргумент і повертає новий компонент, розширюючи його функціональність.
 
-1. **Джерело істини:** Некеровані компоненти зберігають значення у самому DOM через властивість `ref`.
-
-2. **Доступ до значення:** Щоб отримати значення, потрібно звернутися до DOM-елемента за допомогою `ref`.
-
-3. **Використання:** Зазвичай застосовуються, коли інтеграція з іншими бібліотеками або кодом вимагає прямого доступу до DOM.
-
-#### Приклад:
+#### Синтаксис HOC:
 
 ```jsx
-import React, { useRef } from "react";
-
-function UncontrolledForm() {
-  const inputRef = useRef();
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`Input value: ${inputRef.current.value}`);
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" ref={inputRef} />
-      <button type="submit">Submit</button>
-    </form>
-  );
-}
-
-export default UncontrolledForm;
+const EnhancedComponent = higherOrderComponent(WrappedComponent);
 ```
 
-У цьому прикладі `ref` використовується для отримання значення введення після його зміни.
+#### Особливості HOC:
+
+1. Приймає компонент як аргумент.
+
+2. Повертає новий компонент із додатковими властивостями чи поведінкою.
+
+3. Дозволяє перевикористовувати логіку у різних компонентах.
+
+#### Приклад використання:
+
+- HOC для додавання стану до компонента:
+
+```jsx
+import React, { useState } from "react";
+
+// HOC: додає логіку роботи зі станом
+function withCounter(WrappedComponent) {
+  return function EnhancedComponent(props) {
+    const [count, setCount] = useState(0);
+
+    const increment = () => setCount(count + 1);
+
+    return <WrappedComponent count={count} increment={increment} {...props} />;
+  };
+}
+
+// Компонент, який буде розширено
+function Button({ count, increment }) {
+  return <button onClick={increment}>Clicked {count} times</button>;
+}
+
+// Використання HOC
+const EnhancedButton = withCounter(Button);
+
+export default EnhancedButton;
+```
+
+#### Реальні сценарії використання HOC:
+
+1. **Авторизація (Authentication)** — обгортання компонентів для перевірки прав доступу.
+
+2. **Обробка даних** — підключення до API чи обробка стану.
+
+3. **Логування** — додавання журналювання дій компонентів.
+
+#### Обмеження HOC:
+
+- Може створювати глибокі вкладення (component tree), якщо використовувати забагато HOC.
+
+- Ускладнює читабельність через обгортання компонентів.
+
+HOC — потужний інструмент для повторного використання логіки, але в сучасних додатках їх часто замінюють React Hooks.
 
 </details>
 
@@ -2315,7 +2342,92 @@ export default UncontrolledForm;
 </details>
 
 <details>
-<summary>37. ???</summary>
+<summary>37. Що таке children prop?</summary>
+
+#### React
+
+#### Що таке `children` prop?
+
+- `children` — це спеціальний пропс у React, який використовується для передачі вкладених елементів або компонентів у компонент-обгортку.
+
+#### Як це працює?
+
+- Коли ви передаєте дочірній вміст між відкриваючим і закриваючим тегами компонента, цей вміст автоматично передається як значення `props.children`.
+
+#### Приклад:
+
+- **Компонент-обгортка:**
+
+```jsx
+function Wrapper({ children }) {
+  return <div className="wrapper">{children}</div>;
+}
+```
+
+- **Використання:**
+
+```jsx
+function App() {
+  return (
+    <Wrapper>
+      <h1>Hello, World!</h1>
+      <p>This is a paragraph inside the wrapper.</p>
+    </Wrapper>
+  );
+}
+```
+
+- **Результат:**
+
+```html
+<div class="wrapper">
+  <h1>Hello, World!</h1>
+  <p>This is a paragraph inside the wrapper.</p>
+</div>
+```
+
+#### Ключові особливості `children`:
+
+1. **Гнучкість:** Можна передавати будь-який тип даних: текст, JSX, компоненти, масиви елементів.
+
+2. **Повторне використання:** Компонент-обгортка може динамічно відображати різний вміст.
+
+3. **Структурованість:** Допомагає створювати компоненти з вкладеною структурою.
+
+#### Використання `children` з функціональними пропсами:
+
+Іноді `children` використовується як функція для динамічної передачі даних:
+
+```jsx
+function List({ items, children }) {
+  return <ul>{items.map((item) => children(item))}</ul>;
+}
+
+function App() {
+  return (
+    <List items={["Apple", "Banana", "Cherry"]}>
+      {(item) => <li key={item}>{item}</li>}
+    </List>
+  );
+}
+```
+
+- **Результат:**
+
+```html
+<ul>
+  <li>Apple</li>
+  <li>Banana</li>
+  <li>Cherry</li>
+</ul>
+```
+
+- `children` — це потужний інструмент для створення універсальних і багаторазових компонентів у React.
+
+</details>
+
+<details>
+<summary>38. ???</summary>
 
 #### React
 
