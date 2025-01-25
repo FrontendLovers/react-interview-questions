@@ -2115,7 +2115,81 @@ export default UncontrolledForm;
 </details>
 
 <details>
-<summary>35. ???</summary>
+<summary>35. Що таке Lifting State Up у React?</summary>
+
+#### React
+
+**Lifting State Up** — це підхід у React, коли стан (state) піднімається до найближчого спільного предка компонентів, яким потрібно спільно використовувати цей стан. Це дозволяє організувати єдине джерело правди для управління даними між компонентами.
+
+#### Основна ідея:
+
+1. Компоненти, які мають спільно використовувати дані, не повинні кожен мати власний стан.
+
+2. Стан піднімається до батьківського компонента, який передає дані через props дочірнім компонентам.
+
+#### Як це працює:
+
+1. Батьківський компонент зберігає стан.
+
+2. Він передає стан та функції для оновлення стану своїм дочірнім компонентам через props.
+
+3. Дочірні компоненти повідомляють батька про зміни, використовуючи передані функції.
+
+#### Приклад:
+
+```jsx
+import React, { useState } from "react";
+
+function TemperatureInput({ temperature, onTemperatureChange }) {
+  return (
+    <fieldset>
+      <legend>Enter temperature in Celsius:</legend>
+      <input
+        type="number"
+        value={temperature}
+        onChange={(e) => onTemperatureChange(e.target.value)}
+      />
+    </fieldset>
+  );
+}
+
+function BoilingVerdict({ celsius }) {
+  return celsius >= 100 ? (
+    <p>The water will boil.</p>
+  ) : (
+    <p>The water won't boil.</p>
+  );
+}
+
+function Calculator() {
+  const [temperature, setTemperature] = useState("");
+
+  return (
+    <div>
+      <TemperatureInput
+        temperature={temperature}
+        onTemperatureChange={setTemperature}
+      />
+      <BoilingVerdict celsius={parseFloat(temperature)} />
+    </div>
+  );
+}
+
+export default Calculator;
+```
+
+#### Переваги:
+
+1. Забезпечує єдине джерело правди для стану.
+
+2. Полегшує синхронізацію даних між компонентами.
+
+3. Робить компоненти більш передбачуваними та повторно використовуваними.
+
+</details>
+
+<details>
+<summary>36. ???</summary>
 
 #### React
 
