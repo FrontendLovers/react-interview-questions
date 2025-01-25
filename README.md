@@ -2072,7 +2072,50 @@ const clonedElement = React.cloneElement(originalElement, {
 </details>
 
 <details>
-<summary>34. ???</summary>
+<summary>34. Що таке некеровані компоненти (Uncontrolled Components)?</summary>
+
+#### React
+
+- Некеровані компоненти (Uncontrolled Components) — це компоненти React, у яких значення введення керується самим DOM, а не React.
+
+#### Основні особливості:
+
+1. **Джерело істини:** Некеровані компоненти зберігають значення у самому DOM через властивість `ref`.
+
+2. **Доступ до значення:** Щоб отримати значення, потрібно звернутися до DOM-елемента за допомогою `ref`.
+
+3. **Використання:** Зазвичай застосовуються, коли інтеграція з іншими бібліотеками або кодом вимагає прямого доступу до DOM.
+
+#### Приклад:
+
+```jsx
+import React, { useRef } from "react";
+
+function UncontrolledForm() {
+  const inputRef = useRef();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(`Input value: ${inputRef.current.value}`);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" ref={inputRef} />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+export default UncontrolledForm;
+```
+
+У цьому прикладі `ref` використовується для отримання значення введення після його зміни.
+
+</details>
+
+<details>
+<summary>35. ???</summary>
 
 #### React
 
