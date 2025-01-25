@@ -2028,7 +2028,51 @@ function SCSSExample() {
 </details>
 
 <details>
-<summary>33. ???</summary>
+<summary>33. Яка різниця між createElement і cloneElement?</summary>
+
+#### React
+
+| **Метод**             | **Опис**                                                                                    | **Основне застосування**                                                                |
+| --------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `React.createElement` | Створює новий елемент React. Приймає тип елемента, пропси та дочірні елементи як аргументи. | Використовується для створення елементів React з нуля, зазвичай під час рендерингу JSX. |
+| `React.cloneElement`  | Клонує існуючий елемент React, дозволяючи змінити його пропси або дочірні елементи.         | Використовується для створення змінених копій вже існуючих елементів React.             |
+
+#### Приклади:
+
+`React.createElement`
+
+```jsx
+const element = React.createElement(
+  "div",
+  { className: "example" },
+  "Привіт, React!"
+);
+```
+
+Результат: створюється `<div class="example">Привіт, React!</div>`.
+
+`React.cloneElement`
+
+```jsx
+const originalElement = <button className="primary">Натисни</button>;
+
+const clonedElement = React.cloneElement(originalElement, {
+  className: "secondary",
+});
+```
+
+Результат: клон `<button class="secondary">Натисни</button>` зі зміненим класом.
+
+#### Різниця:
+
+- `createElement`: створює абсолютно новий елемент.
+
+- `cloneElement`: працює на основі вже існуючого елемента, дозволяючи змінювати його властивості або вміст.
+
+</details>
+
+<details>
+<summary>34. ???</summary>
 
 #### React
 
