@@ -2189,7 +2189,133 @@ export default Calculator;
 </details>
 
 <details>
-<summary>36. ???</summary>
+<summary>36. Як створити форму в React?</summary>
+
+#### React
+
+#### Створення форми в React
+
+- Форми в React створюються за допомогою елементів `<form>` та відповідних контролів, як-от `<input>`, `<textarea>`, `<select>`. Реактивність форм забезпечується керованими або некерованими компонентами.
+
+#### Керована форма (Controlled Component)
+
+- Керовані компоненти використовують стан (state) для відстеження значення полів форми.
+
+#### Приклад:
+
+```jsx
+import React, { useState } from "react";
+
+function ControlledForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted:", { name, email });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Name:
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </label>
+      <br />
+      <label>
+        Email:
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </label>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+export default ControlledForm;
+```
+
+- **Особливості:**
+
+  - Кожне поле контролюється через `state`.
+
+  - Легко синхронізувати та обробляти дані форми.
+
+#### Некерована форма (Uncontrolled Component)
+
+- Некеровані компоненти використовують реф (`ref`) для прямого доступу до DOM-елементів.
+
+#### Приклад:
+
+```jsx
+import React, { useRef } from "react";
+
+function UncontrolledForm() {
+  const nameRef = useRef();
+  const emailRef = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted:", {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Name:
+        <input type="text" ref={nameRef} />
+      </label>
+      <br />
+      <label>
+        Email:
+        <input type="email" ref={emailRef} />
+      </label>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+export default UncontrolledForm;
+```
+
+- **Особливості:**
+
+  - Доступ до значень здійснюється через ref.
+
+  - Підходить для простих форм.
+
+#### Основні моменти:
+
+1. **Керована форма:**
+
+- Використовує `state`.
+
+- Більш підходить для складних форм, що потребують валідації або синхронізації.
+
+2. Некерована форма:
+
+- Використовує `ref`.
+
+- Простий підхід без складної логіки управління станом.
+
+Вибір підходу залежить від складності форми та потреб у взаємодії з її полями.
+
+</details>
+
+<details>
+<summary>37. ???</summary>
 
 #### React
 
