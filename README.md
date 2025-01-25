@@ -2427,7 +2427,121 @@ function App() {
 </details>
 
 <details>
-<summary>38. ???</summary>
+<summary>38. Як реалізувати додавання класу за умовою в React?</summary>
+
+#### React
+
+- В React умовне додавання класів до елементів зазвичай здійснюється через атрибут `className` і використання тернарного оператора або функцій для визначення умов.
+
+#### Основні підходи:
+
+1. **Тернарний оператор**
+
+```jsx
+function MyComponent({ isActive }) {
+  return (
+    <div className={isActive ? "active-class" : "inactive-class"}>Hello</div>
+  );
+}
+```
+
+- Якщо `isActive` дорівнює `true`, до елемента буде додано клас `active-class`.
+- Інакше — `inactive-class`.
+
+2. **Шаблонні рядки**
+
+```jsx
+function MyComponent({ isHighlighted }) {
+  return (
+    <div className={`base-class ${isHighlighted ? "highlighted-class" : ""}`}>
+      Hello
+    </div>
+  );
+}
+```
+
+- Завжди додається `base-class`.
+- Якщо `isHighlighted` дорівнює true, додається ще й `highlighted-class`.
+
+3. **Бібліотека `clsx`**
+
+- `clsx` допомагає працювати з класами більш елегантно.
+
+```bash
+npm install clsx
+```
+
+```jsx
+import clsx from "clsx";
+
+function MyComponent({ isActive, isDisabled }) {
+  return (
+    <div
+      className={clsx("base-class", {
+        "active-class": isActive,
+        "disabled-class": isDisabled,
+      })}
+    >
+      Hello
+    </div>
+  );
+}
+```
+
+- `clsx` дозволяє легко додавати кілька класів на основі умов.
+
+4. **Бібліотека `classnames`**
+
+- Схожа на `clsx`, але має більше можливостей.
+
+```bash
+npm install classnames
+```
+
+```jsx
+import classNames from "classnames";
+
+function MyComponent({ isActive, isDisabled }) {
+  return (
+    <div
+      className={classNames("base-class", {
+        "active-class": isActive,
+        "disabled-class": isDisabled,
+      })}
+    >
+      Hello
+    </div>
+  );
+}
+```
+
+5. **Винесення логіки в окрему функцію**
+
+```jsx
+function getClassName(isActive, isDisabled) {
+  let className = "base-class";
+  if (isActive) className += " active-class";
+  if (isDisabled) className += " disabled-class";
+  return className;
+}
+
+function MyComponent({ isActive, isDisabled }) {
+  return <div className={getClassName(isActive, isDisabled)}>Hello</div>;
+}
+```
+
+- Логіка визначення класів стає більш читабельною та може бути перевикористана.
+
+#### Висновок:
+
+- Для простих випадків підійде використання тернарного оператора або шаблонних рядків.
+
+- Для складних умов краще застосовувати бібліотеки `clsx` або `classnames`, які забезпечують зручність і читаємість коду.
+
+</details>
+
+<details>
+<summary>39. ???</summary>
 
 #### React
 
