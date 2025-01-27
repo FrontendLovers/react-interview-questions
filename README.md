@@ -2728,7 +2728,34 @@ function App({ isVisible }) {
 </details>
 
 <details>
-<summary>42. ???</summary>
+<summary>42. Чи підтримує функція lazy іменований експорт?</summary>
+
+#### React
+
+- Ні, функція `React.lazy` не підтримує іменований експорт. Вона працює лише з експортом за замовчуванням. Якщо у вас є модуль з іменованим експортом, і ви хочете використовувати його з `React.lazy`, потрібно створити обгортку, яка експортує потрібний компонент за замовчуванням.
+
+#### Приклад обгортки:
+
+```jsx
+// Іменований експорт
+export const MyComponent = () => {
+  return <div>Hello, World!</div>;
+};
+
+// Використання React.lazy
+const LazyComponent = React.lazy(() =>
+  import("./MyComponent").then((module) => ({ default: module.MyComponent }))
+);
+
+export default LazyComponent;
+```
+
+- Тут ми явно вказуємо, що module.MyComponent має бути використаний як експорт за замовчуванням.
+
+</details>
+
+<details>
+<summary>43. ???</summary>
 
 #### React
 
