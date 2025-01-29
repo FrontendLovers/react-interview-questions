@@ -2833,7 +2833,38 @@ export default LazyComponent;
 </details>
 
 <details>
-<summary>44. ???</summary>
+<summary>44. Чому React використовує className замість атрибута класу?</summary>
+
+#### React
+
+- У React використовується `className` замість `class`, тому що `class` є зарезервованим ключовим словом у JavaScript.
+
+#### Причини:
+
+1. **Уникнення конфліктів** – `class` використовується для визначення класів у JavaScript (`class MyComponent {}`), що могло б викликати синтаксичні помилки.
+
+2. **Сумісність з JSX** – JSX є синтаксичним розширенням JavaScript, тому використання `className` допомагає уникнути неоднозначностей.
+
+3. **Пряме відображення** у `document.createElement` – React перетворює JSX у виклики `React.createElement`, і для встановлення класів у DOM-елементах використовується `className`.
+
+#### Приклад:
+
+```jsx
+// Коректний варіант у React
+
+<div className="my-class">Hello</div>
+
+// Некоректний варіант (синтаксична помилка)
+
+<div class="my-class">Hello</div>
+```
+
+- Це стандарт React, який гарантує стабільність і узгодженість у коді.
+
+</details>
+
+<details>
+<summary>45. ???</summary>
 
 #### React
 
