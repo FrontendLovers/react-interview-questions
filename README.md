@@ -3018,7 +3018,106 @@ class Counter extends React.Component {
 </details>
 
 <details>
-<summary>48. ???</summary>
+<summary>48. Як застосувати перевірку пропсів (props) у React?</summary>
+
+#### React
+
+- Для перевірки пропсів у React використовують **PropTypes**.
+
+1. **Встановлення PropTypes (якщо не встановлено)**
+
+```sh
+npm install prop-types
+```
+
+2. **Використання PropTypes у функціональному компоненті:**
+
+```jsx
+import React from "react";
+import PropTypes from "prop-types";
+
+function UserCard({ name, age, isAdmin }) {
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>Age: {age}</p>
+      {isAdmin && <p>Admin Access</p>}
+    </div>
+  );
+}
+
+// Визначення PropTypes
+UserCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number,
+  isAdmin: PropTypes.bool,
+};
+
+// Значення за замовчуванням
+UserCard.defaultProps = {
+  age: 18,
+  isAdmin: false,
+};
+
+export default UserCard;
+```
+
+3. **Використання у класовому компоненті:**
+
+```jsx
+import React from "react";
+import PropTypes from "prop-types";
+
+class UserCard extends React.Component {
+  render() {
+    const { name, age, isAdmin } = this.props;
+    return (
+      <div>
+        <h2>{name}</h2>
+        <p>Age: {age}</p>
+        {isAdmin && <p>Admin Access</p>}
+      </div>
+    );
+  }
+}
+
+// Визначення PropTypes
+UserCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number,
+  isAdmin: PropTypes.bool,
+};
+
+// Значення за замовчуванням
+UserCard.defaultProps = {
+  age: 18,
+  isAdmin: false,
+};
+
+export default UserCard;
+```
+
+#### Доступні типи PropTypes:
+
+- `PropTypes.string`
+- `PropTypes.number`
+- `PropTypes.bool`
+- `PropTypes.array`
+- `PropTypes.object`
+- `PropTypes.func`
+- `PropTypes.node` (JSX або текст)
+- `PropTypes.element` (React-елемент)
+- `PropTypes.oneOf(['value1', 'value2'])` (перелік допустимих значень)
+- `PropTypes.shape({ key: PropTypes.type })` (об'єкт із певною структурою)
+
+#### Висновок:
+
+PropTypes допомагають уникнути помилок, перевіряючи типи пропсів, але в TypeScript це робиться на рівні самої мови.
+
+</details>
+
+<details>
+<summary>49. ???</summary>
 
 #### React
 
