@@ -3517,7 +3517,45 @@ const App = () => {
 </details>
 
 <details>
-<summary>57. ???</summary>
+<summary>57. Що таке ReactDOMServer?</summary>
+
+#### React
+
+- `ReactDOMServer` — це бібліотека, що входить до складу React, і використовується для рендерингу React-компонентів на сервері, тобто для серверного рендерингу (SSR). Це дозволяє генерувати HTML-код на сервері і передавати його на клієнт, що може покращити продуктивність і SEO.
+
+#### Основні методи:
+
+1. `ReactDOMServer.renderToString()`: Рендерить React-елементи в HTML-строку. Це основний метод для генерації статичного HTML для початкового завантаження сторінки.
+
+```jsx
+import ReactDOMServer from "react-dom/server";
+const html = ReactDOMServer.renderToString(<App />);
+```
+
+2. `ReactDOMServer.renderToStaticMarkup()`: Рендерить HTML без будь-яких додаткових атрибутів, пов'язаних з React, таких як data-reactroot. Це підходить для створення повністю статичних сторінок.
+
+```jsx
+const html = ReactDOMServer.renderToStaticMarkup(<App />);
+```
+
+3. `ReactDOMServer.hydrate()`: Використовується на клієнтській стороні для "гідратації" серверно-рендереного HTML, тобто для прив'язування реактивності до уже існуючого HTML.
+
+```jsx
+ReactDOM.hydrate(<App />, document.getElementById("root"));
+```
+
+#### Використання:
+
+- **SSR (Server-Side Rendering):** Це підхід, при якому React-компоненти рендеряться на сервері, а не в браузері, що дозволяє надсилати повністю сформовану HTML-сторінку на клієнт.
+
+- **SEO:** Оскільки сервер відразу відправляє HTML-контент, пошукові системи можуть індексувати сторінки без необхідності виконувати JavaScript.
+
+Таким чином, `ReactDOMServer` дозволяє створювати попередньо рендерені сторінки, що покращує швидкість завантаження і може бути корисним для SEO.
+
+</details>
+
+<details>
+<summary>58. ???</summary>
 
 #### React
 
