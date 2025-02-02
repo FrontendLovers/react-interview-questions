@@ -3555,7 +3555,80 @@ ReactDOM.hydrate(<App />, document.getElementById("root"));
 </details>
 
 <details>
-<summary>58. ???</summary>
+<summary>58. Як обробляти помилки в React за допомогою Error Boundary?</summary>
+
+#### React
+
+- **Error Boundaries** у React дозволяють ловити помилки у компонентах під час рендерингу, в методах життєвого циклу та в конструкторах, а також обробляти їх без повного зупинення додатку.
+
+#### Основні моменти:
+
+- Error Boundary — це компонент, який обгортає інші компоненти і може ловити помилки, що виникають в їхньому коді.
+
+- Error Boundaries ловлять лише помилки, що сталися в їхніх нащадках. Вони не ловлять помилки в самому Error Boundary.
+
+#### Як реалізувати Error Boundary:
+
+1. **Створення Error Boundary:** Для створення Error Boundary потрібно реалізувати два методи:
+
+- `static getDerivedStateFromError(error)` — оновлює стан при виникненні помилки.
+
+- `componentDidCatch(error, info)` — дозволяє реєструвати помилки (наприклад, надсилати їх на сервер).
+
+```jsx
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    // Оновлюємо стан, щоб показати запасний UI
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, info) {
+    // Логіка для реєстрації помилок (наприклад, на сервер)
+    console.error("Error caught:", error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // Показуємо запасний UI, якщо сталася помилка
+      return <h1>Щось пішло не так.</h1>;
+    }
+
+    return this.props.children;
+  }
+}
+```
+
+2. **Використання Error Boundary:** Обгортаємо компоненти, які можуть викликати помилки, у `ErrorBoundary`.
+
+```jsx
+const App = () => {
+  return (
+    <ErrorBoundary>
+      <MyComponent />
+    </ErrorBoundary>
+  );
+};
+```
+
+3. **Запасний інтерфейс:** Коли помилка відбувається, в ErrorBoundary можна показати запасний інтерфейс (наприклад, повідомлення про помилку, кнопку для повторної спроби або навіть дії для відновлення додатку).
+
+#### Важливі моменти:
+
+- Error Boundary не ловить помилки в обробниках подій (наприклад, onClick), асинхронних кодах, таймерах чи мережевих запитах. Для цих випадків використовуй try-catch або інші механізми.
+
+- Якщо помилка сталася у самому Error Boundary, вона не буде зловлена.
+
+Error Boundaries корисні для стабільності додатку, дозволяючи перехоплювати та обробляти помилки, не зупиняючи весь додаток.
+
+</details>
+
+<details>
+<summary>59. ???</summary>
 
 #### React
 
