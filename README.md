@@ -3310,7 +3310,98 @@ MyComponent.propTypes = {
 </details>
 
 <details>
-<summary>54. ???</summary>
+<summary>54. Як реалізувати анімацію в React?</summary>
+
+#### React
+
+1. **CSS анімації:** Найпростіший спосіб — використання стандартних CSS анімацій або переходів.
+
+```jsx
+
+<div className="my-element">Hello</div>
+
+<style jsx>{`
+  .my-element {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+`}</style>
+```
+
+2. **React Transition Group:** Для більш складних анімаційних переходів між компонентами. Цей пакет дозволяє керувати анімацією під час додавання чи видалення компонентів.
+
+```jsx
+
+import { CSSTransition } from 'react-transition-group';
+
+<CSSTransition in={isVisible} timeout={300} classNames="fade" unmountOnExit>
+  <div>Content</div>
+</CSSTransition>
+
+<style jsx>{`
+  .fade-enter {
+    opacity: 0;
+  }
+  .fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  .fade-exit {
+    opacity: 1;
+  }
+  .fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+`}</style>
+```
+
+3. **Framer Motion:** Це потужна бібліотека для анімацій, яка дозволяє реалізувати складні анімації в React.
+
+```jsx
+import { motion } from "framer-motion";
+
+<motion.div
+  animate={{ opacity: 1 }}
+  initial={{ opacity: 0 }}
+  transition={{ duration: 1 }}
+>
+  Hello
+</motion.div>;
+```
+
+4. **React Spring:** Для фізично базованих анімацій, що дозволяють створювати анімації з реалістичними рухами.
+
+```jsx
+import { useSpring, animated } from "react-spring";
+
+const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+
+<animated.div style={props}>Hello</animated.div>;
+```
+
+5. **Inline стилі та JavaScript:** Можна використовувати setState та змінювати стилі на основі стану компонента.
+
+```jsx
+const [opacity, setOpacity] = useState(0);
+
+useEffect(() => {
+  setOpacity(1);
+}, []);
+
+return <div style={{ opacity }}>Hello</div>;
+```
+
+- Для складніших анімаційних ефектів рекомендується використовувати **_Framer Motion_** або **_React Spring_**, бо ці бібліотеки дають більше можливостей та легше керувати складними анімаціями.
+
+</details>
+
+<details>
+<summary>55. ???</summary>
 
 #### React
 
