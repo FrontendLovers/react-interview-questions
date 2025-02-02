@@ -3628,7 +3628,59 @@ Error Boundaries корисні для стабільності додатку, 
 </details>
 
 <details>
-<summary>59. ???</summary>
+<summary>59. Як використовувати InnerHtml у React?</summary>
+
+#### React
+
+- У React для вставки HTML-контенту в DOM використовується атрибут dangerouslySetInnerHTML. Це дає можливість вставити HTML безпосередньо в компонент, однак такий підхід може бути небезпечним, тому й називається "dangerously", оскільки він дозволяє вбудовувати сирий HTML, що може призвести до XSS-атак, якщо дані не очищені.
+
+#### Приклад використання `dangerouslySetInnerHTML`:
+
+```jsx
+const MyComponent = () => {
+  const htmlContent = "<p>Це <strong>HTML</strong> контент.</p>";
+
+  return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
+};
+```
+
+#### Пояснення:
+
+- `dangerouslySetInnerHTML` приймає об'єкт, в якому ключ `__html` містить рядок HTML-коду.
+
+- Це дозволяє вбудовувати HTML всередину компонента, але не безпечно, якщо контент надходить з ненадійних джерел.
+
+#### Коли використовувати:
+
+- Якщо ви впевнені в безпечності даних (наприклад, від власних серверів).
+
+- Коли вам потрібно вбудувати динамічний HTML-контент, такий як сторінки чи статті з HTML.
+
+#### Застереження:
+
+- Безпека: Ніколи не використовуйте dangerouslySetInnerHTML для вставки даних, отриманих від користувача чи зовнішніх джерел, без попередньої очистки від шкідливих скриптів.
+
+- Для очищення контенту використовуйте бібліотеки, такі як DOMPurify, щоб уникнути XSS атак.
+
+Приклад очищення даних перед вставкою:
+
+```jsx
+import DOMPurify from "dompurify";
+
+const MyComponent = () => {
+  const dirtyHtml = "<img src=x onerror=alert('XSS')>";
+  const cleanHtml = DOMPurify.sanitize(dirtyHtml);
+
+  return <div dangerouslySetInnerHTML={{ __html: cleanHtml }} />;
+};
+```
+
+Отже, `dangerouslySetInnerHTML` слід використовувати обережно і тільки в тих випадках, коли ви впевнені в безпеці контенту.
+
+</details>
+
+<details>
+<summary>60. ???</summary>
 
 #### React
 
