@@ -3737,7 +3737,76 @@ const App = () => {
 </details>
 
 <details>
-<summary>61. ???</summary>
+<summary>61. Що таке компонент-перемикач (Switching Component)?</summary>
+
+#### React
+
+- **Компонент-перемикач (Switching Component)** в React — це патерн, коли компонент динамічно рендерить один із своїх дочірніх компонентів на основі певної умови. Це використовується, коли потрібно відображати різні компоненти залежно від стану, маршруту чи отриманих даних.
+
+#### Приклад 1: Перемикання на основі стану
+
+```jsx
+const SwitchingComponent = ({ type }) => {
+  switch (type) {
+    case "success":
+      return <SuccessMessage />;
+    case "error":
+      return <ErrorMessage />;
+    default:
+      return <DefaultMessage />;
+  }
+};
+```
+
+```jsx
+const App = () => {
+  return <SwitchingComponent type="success" />;
+};
+```
+
+- `type` визначає, який компонент буде відображений.
+
+#### Приклад 2: Використання з React Router
+
+```jsx
+import { Route, Routes } from "react-router-dom";
+
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="\*" element={<NotFound />} />
+    </Routes>
+  );
+};
+```
+
+- Тут `Routes` виступає як компонент-перемикач для рендерингу відповідного компонента залежно від URL.
+
+#### Приклад 3: Умовне рендеринг через об'єкт
+
+```jsx
+const components = {
+  success: SuccessMessage,
+  error: ErrorMessage,
+  default: DefaultMessage,
+};
+
+const SwitchingComponent = ({ type }) => {
+  const Component = components[type] || components.default;
+  return <Component />;
+};
+```
+
+- Це більш чистий варіант без `switch`.
+
+Компоненти-перемикачі спрощують логіку та роблять код більш читабельним, коли потрібно умовно рендерити різні компоненти.
+
+</details>
+
+<details>
+<summary>62. ???</summary>
 
 #### React
 
