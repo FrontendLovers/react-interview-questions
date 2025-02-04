@@ -3806,7 +3806,92 @@ const SwitchingComponent = ({ type }) => {
 </details>
 
 <details>
-<summary>62. ???</summary>
+<summary>62. Що таке "опитування" (Polling)? Як його реалізувати у React?</summary>
+
+#### React
+
+- **Опитування (Polling)** — це періодичне надсилання запитів до сервера для отримання оновлених даних. Це корисно, коли сервер не підтримує WebSockets або Server-Sent Events, а клієнт має отримувати нову інформацію без необхідності перезавантаження сторінки.
+
+#### Реалізація Polling у React
+
+- Опитування можна реалізувати через `setInterval`, `setTimeout` або використовуючи React-хуки (`useEffect`).
+
+1. **Використання `setInterval`**
+
+```jsx
+import { useState, useEffect } from "react";
+
+const PollingComponent = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("https://api.example.com/data");
+      const result = await response.json();
+      setData(result);
+    };
+
+    fetchData(); // Виконати одразу при завантаженні
+
+    const interval = setInterval(fetchData, 5000); // Опитування кожні 5 сек.
+
+    return () => clearInterval(interval); // Очищення при розмонтуванні
+  }, []);
+
+  return <div>{data ? JSON.stringify(data) : "Завантаження..."}</div>;
+};
+```
+
+- fetchData() отримує дані із сервера.
+- setInterval запускає опитування кожні 5 секунд.
+- clearInterval зупиняє опитування при розмонтуванні.
+
+2. **Використання `setTimeout` для динамічного інтервалу**
+
+- Якщо сервер має обмеження по запитах, краще використовувати setTimeout, щоб уникнути накладання запитів.
+
+```jsx
+const PollingComponent = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://api.example.com/data");
+        const result = await response.json();
+        if (isMounted) setData(result);
+      } catch (error) {
+        console.error("Помилка запиту", error);
+      } finally {
+        if (isMounted) setTimeout(fetchData, 5000);
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      isMounted = false; // Запобігає оновленню стану після розмонтування
+    };
+  }, []);
+
+  return <div>{data ? JSON.stringify(data) : "Завантаження..."}</div>;
+};
+```
+
+- Тут setTimeout викликається лише після завершення попереднього запиту, що дозволяє уникнути накладання запитів.
+
+#### Висновок
+
+- setInterval підходить для постійного опитування, але може створювати накладення запитів.
+- setTimeout дає більше контролю і краще підходить для адаптивного опитування.
+- У разі великих навантажень варто розглянути WebSockets або Server-Sent Events.
+
+</details>
+
+<details>
+<summary>63. ???</summary>
 
 #### React
 
