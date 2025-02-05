@@ -3964,7 +3964,82 @@ class MyComponent extends React.Component {
 </details>
 
 <details>
-<summary>64. ???</summary>
+<summary>64. Як React обробляє чи обмежує використання пропсів певного типу?</summary>
+
+#### React
+
+- React обмежує використання пропсів певного типу за допомогою `PropTypes` або `TypeScript`.
+
+1. **Використання PropTypes (вбудована перевірка типів)**
+
+```jsx
+import PropTypes from "prop-types";
+
+const MyComponent = ({ name, age, isActive }) => {
+  return (
+    <div>
+      <h1>{name}</h1>
+      <p>Вік: {age}</p>
+      <p>{isActive ? "Активний" : "Неактивний"}</p>
+    </div>
+  );
+};
+
+// Визначення типів пропсів
+MyComponent.propTypes = {
+  name: PropTypes.string.isRequired,
+  age: PropTypes.number,
+  isActive: PropTypes.bool,
+};
+```
+
+- `PropTypes.string.isRequired` — обов’язковий пропс name.
+- `PropTypes.number` — age має бути числом.
+- `PropTypes.bool` — isActive має бути булевим значенням.
+
+Якщо передані некоректні типи, React видасть попередження в консолі (тільки у режимі розробки).
+
+2. Використання TypeScript (строга перевірка на рівні компіляції)
+
+```tsx
+Копіювати;
+Редагувати;
+type MyComponentProps = {
+  name: string;
+  age?: number;
+  isActive: boolean;
+};
+
+const MyComponent: React.FC<MyComponentProps> = ({ name, age, isActive }) => {
+  return (
+    <div>
+      <h1>{name}</h1>
+      <p>Вік: {age}</p>
+      <p>{isActive ? "Активний" : "Неактивний"}</p>
+    </div>
+  );
+};
+```
+
+- `name: string` — обов’язковий рядковий пропс.
+- `age?: number` — необов’язковий числовий пропс.
+- `isActive: boolean` — обов’язковий булевий пропс.
+
+TypeScript дає помилку ще до запуску коду, якщо передані неправильні пропси.
+
+#### Що вибрати?
+
+| **Метод**      | **Переваги**                            | **Недоліки**                              |
+| -------------- | --------------------------------------- | ----------------------------------------- |
+| **PropTypes**  | Простий, працює в JavaScript            | Перевіряє лише в runtime, слабка безпека  |
+| **TypeScript** | Строга типізація, ловить помилки раніше | Потрібна компіляція, складніший синтаксис |
+
+- Якщо проєкт на **TypeScript**, **PropTypes** не потрібен. Якщо **JavaScript**, **PropTypes** дає базову перевірку.
+
+</details>
+
+<details>
+<summary>65. ???</summary>
 
 #### React
 
