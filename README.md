@@ -5361,7 +5361,7 @@ useEffect(() => {
 </details>
 
 <details>
-<summary>94. ???</summary>
+<summary>94. Що таке реактивний потік даних (reactive data flow) у React?</summary>
 
 #### React
 
