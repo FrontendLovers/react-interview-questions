@@ -552,7 +552,7 @@ function ChildComponent() {
 </details>
 
 <details>
-<summary>88. Чому React використовує className замість атрибута класу?</summary>
+<summary>13. Чому React використовує className замість атрибута класу?</summary>
 
 #### React
 
@@ -583,7 +583,7 @@ function ChildComponent() {
 </details>
 
 <details>
-<summary>93. Які є винятки щодо іменування компонентів React?</summary>
+<summary>14. Які є винятки щодо іменування компонентів React?</summary>
 
 #### React
 
@@ -619,7 +619,7 @@ function ChildComponent() {
 </details>
 
 <details>
-<summary>95. Як писати коментарі в React?</summary>
+<summary>15. Як писати коментарі в React?</summary>
 
 #### React
 
@@ -678,7 +678,7 @@ function MyComponent() {
 ### Рендеринг та оновлення стану
 
 <details>
-<summary>13. Що таке Virtual DOM в React?</summary>
+<summary>16. Що таке Virtual DOM в React?</summary>
 
 #### React
 
@@ -699,7 +699,7 @@ function MyComponent() {
 </details>
 
 <details>
-<summary>14. Що таке (key) prop і яка перевага його використання в масивах елементів?</summary>
+<summary>17. Що таке (key) prop і яка перевага його використання в масивах елементів?</summary>
 
 #### React
 
@@ -766,7 +766,7 @@ function FruitList() {
 </details>
 
 <details>
-<summary>15. Що таке умовний рендеринг у React?</summary>
+<summary>18. Що таке умовний рендеринг у React?</summary>
 
 #### React
 
@@ -838,7 +838,7 @@ function UserStatus(props) {
 </details>
 
 <details>
-<summary>16. Що таке фрагменти (Fragments) у React?</summary>
+<summary>19. Що таке фрагменти (Fragments) у React?</summary>
 
 #### React
 
@@ -906,7 +906,7 @@ function MyComponent() {
 </details>
 
 <details>
-<summary>17. Що таке узгодження (Reconciliation)?</summary>
+<summary>20. Що таке узгодження (Reconciliation)?</summary>
 
 #### React
 
@@ -968,7 +968,7 @@ function App({ isVisible }) {
 </details>
 
 <details>
-<summary>18. Як оновити стан компонента?</summary>
+<summary>21. Як оновити стан компонента?</summary>
 
 #### React
 
@@ -1041,7 +1041,7 @@ setCount((prevCount) => prevCount + 1);
 </details>
 
 <details>
-<summary>19. Що таке вбудовані умовні вирази?</summary>
+<summary>22. Що таке вбудовані умовні вирази?</summary>
 
 #### React
 
@@ -1111,7 +1111,7 @@ function App() {
 ### Події в React
 
 <details>
-<summary>20. Яка різниця між обробкою подій HTML і React?</summary>
+<summary>23. Яка різниця між обробкою подій HTML і React?</summary>
 
 #### React
 
@@ -1153,7 +1153,7 @@ function App() {
 </details>
 
 <details>
-<summary>21. Що таке синтетичні події в React?</summary>
+<summary>24. Що таке синтетичні події в React?</summary>
 
 #### React
 
@@ -1188,7 +1188,7 @@ function App() {
 </details>
 
 <details>
-<summary>22. Як обробляти події в React?</summary>
+<summary>25. Як обробляти події в React?</summary>
 
 #### React
 
@@ -1288,7 +1288,7 @@ function MyButton({ label }) {
 </details>
 
 <details>
-<summary>23. Що таке події вказівника (Pointer Events)?</summary>
+<summary>26. Що таке події вказівника (Pointer Events)?</summary>
 
 #### React
 
@@ -1331,7 +1331,7 @@ const PointerExample = () => {
 ### Компоненти та їх типи
 
 <details>
-<summary>24. Коли використовувати компонент класу замість функціонального компонента?</summary>
+<summary>27. Коли використовувати компонент класу замість функціонального компонента?</summary>
 
 #### React
 
@@ -1353,7 +1353,7 @@ const PointerExample = () => {
 </details>
 
 <details>
-<summary>25. Що таке компоненти без стану (stateless components)?</summary>
+<summary>28. Що таке компоненти без стану (stateless components)?</summary>
 
 #### React
 
@@ -1392,7 +1392,7 @@ function Greeting(props) {
 </details>
 
 <details>
-<summary>26. Що таке компоненти стану (stateful components)?</summary>
+<summary>29. Що таке компоненти стану (stateful components)?</summary>
 
 #### React
 
@@ -1446,7 +1446,7 @@ class Counter extends React.Component {
 </details>
 
 <details>
-<summary>27. Що таке чисті компоненти (Pure Components)?</summary>
+<summary>30. Що таке чисті компоненти (Pure Components)?</summary>
 
 #### React
 
@@ -1504,7 +1504,7 @@ const MyComponent = React.memo(function MyComponent(props) {
 </details>
 
 <details>
-<summary>28. Що таке компоненти вищого порядку (Higher-Order components)?</summary>
+<summary>31. Що таке компоненти вищого порядку (Higher-Order components)?</summary>
 
 #### React
 
@@ -1574,7 +1574,7 @@ HOC — потужний інструмент для повторного вик
 </details>
 
 <details>
-<summary>29. Що таке children prop?</summary>
+<summary>32. Що таке children prop?</summary>
 
 #### React
 
@@ -1658,7 +1658,7 @@ function App() {
 </details>
 
 <details>
-<summary>30. Що таке портал (Portal)?</summary>
+<summary>33. Що таке портал (Portal)?</summary>
 
 #### React
 
@@ -1731,7 +1731,7 @@ function App() {
 </details>
 
 <details>
-<summary>31. Як працюють портали (Portals) в React, і які їх переваги та основні застосування в UI-розробці?</summary>
+<summary>34. Як працюють портали (Portals) в React, і які їх переваги та основні застосування в UI-розробці?</summary>
 
 #### React
 
@@ -1790,7 +1790,7 @@ const App = () => {
 ### Життєвий цикл компонента
 
 <details>
-<summary>32. Методи життєвого циклу компонента у React?</summary>
+<summary>35. Методи життєвого циклу компонента у React?</summary>
 
 #### React
 
@@ -1858,7 +1858,7 @@ const App = () => {
 </details>
 
 <details>
-<summary>33. Що робить метод shouldComponentUpdate?</summary>
+<summary>36. Що робить метод shouldComponentUpdate?</summary>
 
 #### React
 
@@ -1893,7 +1893,7 @@ class MyComponent extends React.Component {
 </details>
 
 <details>
-<summary>34. Як виконати код перед видаленням компонента з дерева?</summary>
+<summary>37. Як виконати код перед видаленням компонента з дерева?</summary>
 
 #### React
 
@@ -1959,7 +1959,7 @@ useEffect(() => {
 </details>
 
 <details>
-<summary>35. Чому фрагменти (Fragment) кращі за контейнерні div?</summary>
+<summary>38. Чому фрагменти (Fragment) кращі за контейнерні div?</summary>
 
 #### React
 
@@ -2022,7 +2022,7 @@ useEffect(() => {
 ### Хуки
 
 <details>
-<summary>36. Що таке Хуки (Hooks) в React?</summary>
+<summary>39. Що таке Хуки (Hooks) в React?</summary>
 
 #### React
 
@@ -2087,7 +2087,7 @@ const memoizedCallback = useCallback(() => {
 </details>
 
 <details>
-<summary>37. Переваги Хуків (Hooks) в React?</summary>
+<summary>40. Переваги Хуків (Hooks) в React?</summary>
 
 #### React
 
@@ -2103,7 +2103,7 @@ const memoizedCallback = useCallback(() => {
 </details>
 
 <details>
-<summary>38. Недоліки Хуків (Hooks) в React?</summary>
+<summary>41. Недоліки Хуків (Hooks) в React?</summary>
 
 #### React
 
@@ -2118,7 +2118,7 @@ const memoizedCallback = useCallback(() => {
 </details>
 
 <details>
-<summary>39. Правила (обмеження) використання Хуків (Hooks) в React?</summary>
+<summary>42. Правила (обмеження) використання Хуків (Hooks) в React?</summary>
 
 #### React
 
@@ -2133,7 +2133,7 @@ const memoizedCallback = useCallback(() => {
 </details>
 
 <details>
-<summary>40. Що таке useReducer()?</summary>
+<summary>43. Що таке useReducer()?</summary>
 
 #### React
 
@@ -2193,7 +2193,7 @@ function Counter() {
 </details>
 
 <details>
-<summary>41. Розкажіть про хуки useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect()?</summary>
+<summary>44. Розкажіть про хуки useCallback(), useMemo(), useImperativeHandle(), useLayoutEffect()?</summary>
 
 #### React
 
@@ -2308,7 +2308,7 @@ function LayoutEffectExample() {
 </details>
 
 <details>
-<summary>42. Як реалізувати одноразове виконання операції під час початкового рендерингу?</summary>
+<summary>45. Як реалізувати одноразове виконання операції під час початкового рендерингу?</summary>
 
 #### React
 
@@ -2351,7 +2351,7 @@ useEffect(() => {
 ### Контекст та управління станом
 
 <details>
-<summary>43. Що таке контекст (Context)?</summary>
+<summary>46. Що таке контекст (Context)?</summary>
 
 #### React
 
@@ -2424,7 +2424,7 @@ function ThemedComponent() {
 </details>
 
 <details>
-<summary>44. Як в React працює механізм контексту (Context) для спільної передачі даних між компонентами?</summary>
+<summary>47. Як в React працює механізм контексту (Context) для спільної передачі даних між компонентами?</summary>
 
 #### React
 
@@ -2503,7 +2503,7 @@ const App = () => {
 </details>
 
 <details>
-<summary>45. Що таке буріння пропсів (Prop Drilling)? Як його уникнути?</summary>
+<summary>48. Що таке буріння пропсів (Prop Drilling)? Як його уникнути?</summary>
 
 #### React
 
@@ -2564,7 +2564,7 @@ const GrandChild = () => {
 </details>
 
 <details>
-<summary>46. Що таке Redux?</summary>
+<summary>49. Що таке Redux?</summary>
 
 #### React
 
@@ -2589,7 +2589,7 @@ Redux підходить для великих додатків з усклад�
 </details>
 
 <details>
-<summary>47. Які ти ще знаш бібліотеки керуванням стану в React крім Redux?</summary>
+<summary>50. Які ти ще знаш бібліотеки керуванням стану в React крім Redux?</summary>
 
 #### React
 
@@ -2614,7 +2614,7 @@ Redux підходить для великих додатків з усклад�
 </details>
 
 <details>
-<summary>48. Що таке Redux Thunk?</summary>
+<summary>51. Що таке Redux Thunk?</summary>
 
 #### React
 
@@ -2663,7 +2663,7 @@ dispatch(fetchData());
 </details>
 
 <details>
-<summary>49. Як працює Redux Saga?</summary>
+<summary>52. Як працює Redux Saga?</summary>
 
 #### React
 
@@ -2723,7 +2723,7 @@ sagaMiddleware.run(watchFetchData);
 </details>
 
 <details>
-<summary>50. Що таке React Fiber?</summary>
+<summary>53. Що таке React Fiber?</summary>
 
 #### React
 
@@ -2776,7 +2776,7 @@ sagaMiddleware.run(watchFetchData);
 </details>
 
 <details>
-<summary>51. Що таке Lifting State Up у React?</summary>
+<summary>54. Що таке Lifting State Up у React?</summary>
 
 #### React
 
@@ -2852,7 +2852,7 @@ export default Calculator;
 ### Форми в React
 
 <details>
-<summary>52. Що таке контрольовані компоненти (Controlled Components)?</summary>
+<summary>55. Що таке контрольовані компоненти (Controlled Components)?</summary>
 
 #### React
 
@@ -2945,7 +2945,7 @@ function UncontrolledForm() {
 </details>
 
 <details>
-<summary>53. Що таке неконтрольовані компоненти (Uncontrolled Components)?</summary>
+<summary>56. Що таке неконтрольовані компоненти (Uncontrolled Components)?</summary>
 
 #### React
 
@@ -3013,7 +3013,7 @@ export default UncontrolledForm;
 </details>
 
 <details>
-<summary>54. Як створити форму в React?</summary>
+<summary>57. Як створити форму в React?</summary>
 
 #### React
 
@@ -3139,7 +3139,7 @@ export default UncontrolledForm;
 </details>
 
 <details>
-<summary>55. Як застосувати перевірку пропсів (props) у React?</summary>
+<summary>58. Як застосувати перевірку пропсів (props) у React?</summary>
 
 #### React
 
@@ -3240,7 +3240,7 @@ PropTypes допомагають уникнути помилок, перевір
 ### Маршрутизація
 
 <details>
-<summary>56. Чим React Router відрізняється від звичайної маршрутизації?</summary>
+<summary>59. Чим React Router відрізняється від звичайної маршрутизації?</summary>
 
 #### React
 
@@ -3258,7 +3258,7 @@ PropTypes допомагають уникнути помилок, перевір
 </details>
 
 <details>
-<summary>57. Як передавати пропси в React Router?</summary>
+<summary>60. Як передавати пропси в React Router?</summary>
 
 #### React
 
@@ -3343,7 +3343,7 @@ function Profile() {
 ### Стилізація в React
 
 <details>
-<summary>58. Способи стилізації в React-компонентах?</summary>
+<summary>61. Способи стилізації в React-компонентах?</summary>
 
 #### React
 
@@ -3495,7 +3495,7 @@ function SCSSExample() {
 </details>
 
 <details>
-<summary>59. У чому перевага модульних стилів (module CSS)?</summary>
+<summary>62. У чому перевага модульних стилів (module CSS)?</summary>
 
 #### React
 
@@ -3518,7 +3518,7 @@ function SCSSExample() {
 ### Оптимізація продуктивності
 
 <details>
-<summary>60. Які підходи ви знаєте для оптимізації продуктивності React-додатків?</summary>
+<summary>63. Які підходи ви знаєте для оптимізації продуктивності React-додатків?</summary>
 
 #### React
 
@@ -3596,7 +3596,7 @@ function SCSSExample() {
 </details>
 
 <details>
-<summary>61. Різниця між memo і useMemo?</summary>
+<summary>64. Різниця між memo і useMemo?</summary>
 
 #### React
 
@@ -3620,7 +3620,7 @@ function SCSSExample() {
 </details>
 
 <details>
-<summary>62. Навіщо setState() потрібно передавати функцію?</summary>
+<summary>65. Навіщо setState() потрібно передавати функцію?</summary>
 
 #### React
 
@@ -3665,7 +3665,7 @@ function Counter() {
 ### Взаємодія з DOM
 
 <details>
-<summary>63. Як рефи (refs) у React використовуються для взаємодії з DOM елементами?</summary>
+<summary>66. Як рефи (refs) у React використовуються для взаємодії з DOM елементами?</summary>
 
 #### React
 
@@ -3701,7 +3701,7 @@ inputRef.current.focus();
 </details>
 
 <details>
-<summary>64. Як використовувати InnerHtml у React?</summary>
+<summary>67. Як використовувати InnerHtml у React?</summary>
 
 #### React
 
@@ -3755,7 +3755,7 @@ const MyComponent = () => {
 ### Рендеринг та серверна частина
 
 <details>
-<summary>65. Що таке ReactDOMServer?</summary>
+<summary>68. Що таке ReactDOMServer?</summary>
 
 #### React
 
@@ -3793,7 +3793,7 @@ ReactDOM.hydrate(<App />, document.getElementById("root"));
 </details>
 
 <details>
-<summary>66. Яке використання пакету react-dom?</summary>
+<summary>69. Яке використання пакету react-dom?</summary>
 
 #### React
 
@@ -3830,7 +3830,7 @@ ReactDOM.unmountComponentAtNode(document.getElementById("root"));
 </details>
 
 <details>
-<summary>67. Як використовувати React.lazy та React.Suspense для запуску коду програми?</summary>
+<summary>70. Як використовувати React.lazy та React.Suspense для запуску коду програми?</summary>
 
 #### React
 
@@ -3891,7 +3891,7 @@ function App() {
 ### Безпека
 
 <details>
-<summary>68. Найкращі практики безпеки в React?</summary>
+<summary>71. Найкращі практики безпеки в React?</summary>
 
 #### React
 
@@ -3948,7 +3948,7 @@ function App() {
 </details>
 
 <details>
-<summary>69. Як обробляти помилки в React за допомогою Error Boundary?</summary>
+<summary>72. Як обробляти помилки в React за допомогою Error Boundary?</summary>
 
 #### React
 
@@ -4023,7 +4023,7 @@ Error Boundaries корисні для стабільності додатку, 
 ### Додаткові концепції
 
 <details>
-<summary>70. Що таке інверсія спадкування (Inheritance Inversion)?</summary>
+<summary>73. Що таке інверсія спадкування (Inheritance Inversion)?</summary>
 
 #### React
 
@@ -4080,7 +4080,7 @@ class Parent {
 </details>
 
 <details>
-<summary>71. Що таке "опитування" (Polling)? Як його реалізувати у React?</summary>
+<summary>74. Що таке "опитування" (Polling)? Як його реалізувати у React?</summary>
 
 #### React
 
@@ -4165,7 +4165,7 @@ const PollingComponent = () => {
 </details>
 
 <details>
-<summary>72. Як у React реалізувати двостороннє зв'язування даних?</summary>
+<summary>75. Як у React реалізувати двостороннє зв'язування даних?</summary>
 
 #### React
 
@@ -4207,7 +4207,7 @@ export default TwoWayBinding;
 </details>
 
 <details>
-<summary>73. Що таке зворотний потік даних (Reverse Data Flow) у React?</summary>
+<summary>76. Що таке зворотний потік даних (Reverse Data Flow) у React?</summary>
 
 #### React
 
@@ -4244,7 +4244,7 @@ function Child({ onValueChange }) {
 </details>
 
 <details>
-<summary>74. Що таке мутація стану і як їй запобігти?</summary>
+<summary>77. Що таке мутація стану і як їй запобігти?</summary>
 
 #### React
 
@@ -4263,7 +4263,7 @@ function Child({ onValueChange }) {
 - </details>
 
 <details>
-<summary>75. Що таке строгий режим (Strict Mode) React? Його переваги?</summary>
+<summary>78. Що таке строгий режим (Strict Mode) React? Його переваги?</summary>
 
 #### React
 
@@ -4300,7 +4300,7 @@ root.render(
 </details>
 
 <details>
-<summary>76. Які рекомендовані способи перевірки статичних типів?</summary>
+<summary>79. Які рекомендовані способи перевірки статичних типів?</summary>
 
 #### React
 
@@ -4326,7 +4326,7 @@ MyComponent.propTypes = {
 ### Анімація
 
 <details>
-<summary>77. Як реалізувати анімацію в React?</summary>
+<summary>80. Як реалізувати анімацію в React?</summary>
 
 #### React
 
@@ -4417,7 +4417,7 @@ return <div style={{ opacity }}>Hello</div>;
 </details>
 
 <details>
-<summary>78. Які самі популярні пакети для анімації у React?</summary>
+<summary>81. Які самі популярні пакети для анімації у React?</summary>
 
 #### React
 
@@ -4438,7 +4438,7 @@ return <div style={{ opacity }}>Hello</div>;
 ### Тестування та налагодження
 
 <details>
-<summary>79. React DevTools: Як використовувати для налагодження?</summary>
+<summary>82. React DevTools: Як використовувати для налагодження?</summary>
 
 #### React
 
@@ -4505,7 +4505,7 @@ react-devtools
 </details>
 
 <details>
-<summary>80. Які самі популярні лінтери для React?</summary>
+<summary>83. Які самі популярні лінтери для React?</summary>
 
 #### React
 
@@ -4524,7 +4524,7 @@ react-devtools
 ### Суміжні технології
 
 <details>
-<summary>81. Що таке Next.js?</summary>
+<summary>84. Що таке Next.js?</summary>
 
 #### React
 
@@ -4544,7 +4544,7 @@ react-devtools
 </details>
 
 <details>
-<summary>82. Які головні відміності між Next.js і React?</summary>
+<summary>85. Які головні відміності між Next.js і React?</summary>
 
 #### React
 
@@ -4570,7 +4570,7 @@ react-devtools
 </details>
 
 <details>
-<summary>83. Для чого потрібен React Helmet Async?</summary>
+<summary>86. Для чого потрібен React Helmet Async?</summary>
 
 #### React
 
@@ -4637,7 +4637,7 @@ const finalHtml = `
 ### Підхід до розробки
 
 <details>
-<summary>84. Що таке розподілений компонент (Distributed Component)?</summary>
+<summary>87. Що таке розподілений компонент (Distributed Component)?</summary>
 
 #### React
 
@@ -4708,7 +4708,7 @@ function App() {
 </details>
 
 <details>
-<summary>85. Що таке компонент-перемикач (Switching Component)?</summary>
+<summary>88. Що таке компонент-перемикач (Switching Component)?</summary>
 
 #### React
 
@@ -4779,7 +4779,7 @@ const SwitchingComponent = ({ type }) => {
 ### Просунуті питання
 
 <details>
-<summary>86. Що таке Reselect та як він працює?</summary>
+<summary>89. Що таке Reselect та як він працює?</summary>
 
 #### React
 
@@ -4826,7 +4826,7 @@ export const selectFilteredUsers = createSelector(
 </details>
 
 <details>
-<summary>87. Які типи даних може повернути render?</summary>
+<summary>90. Які типи даних може повернути render?</summary>
 
 #### React
 
@@ -4903,7 +4903,7 @@ return createPortal(<div>Modal</div>, document.getElementById("modal-root"));
 </details>
 
 <details>
-<summary>89. Як React обробляє чи обмежує використання пропсів певного типу?</summary>
+<summary>91. Як React обробляє чи обмежує використання пропсів певного типу?</summary>
 
 #### React
 
@@ -4978,7 +4978,7 @@ TypeScript дає помилку ще до запуску коду, якщо п�
 </details>
 
 <details>
-<summary>90. Різниця між рендерингом та монтуванням?</summary>
+<summary>92. Різниця між рендерингом та монтуванням?</summary>
 
 #### React
 
@@ -5014,7 +5014,7 @@ return <button onClick={() => setCount(count + 1)}>+</button>;
 </details>
 
 <details>
-<summary>91. Що таке реактивний потік даних (reactive data flow) у React?</summary>
+<summary>93. Що таке реактивний потік даних (reactive data flow) у React?</summary>
 
 #### React
 
@@ -5064,7 +5064,7 @@ function Counter() {
 </details>
 
 <details>
-<summary>92. Чи є React реактивним?</summary>
+<summary>94. Чи є React реактивним?</summary>
 
 #### React
 
@@ -5081,7 +5081,7 @@ function Counter() {
 </details>
 
 <details>
-<summary>94. Які варіанти реалізації drag-and-drop у React ти знаєш?</summary>
+<summary>95. Які варіанти реалізації drag-and-drop у React ти знаєш?</summary>
 
 #### React
 
