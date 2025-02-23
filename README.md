@@ -5492,7 +5492,7 @@ useEffect(() => {
 </details>
 
 <details>
-<summary>101. Що таке useReducer()?</summary>
+<summary>99. Що таке useReducer()?</summary>
 
 #### React
 
@@ -5552,7 +5552,7 @@ function Counter() {
 </details>
 
 <details>
-<summary>102. Як використовувати React.lazy та React.Suspense для запуску коду програми?</summary>
+<summary>100. Як використовувати React.lazy та React.Suspense для запуску коду програми?</summary>
 
 #### React
 
@@ -5611,7 +5611,7 @@ function App() {
 </details>
 
 <details>
-<summary>103. Які підходи використовуються для виконання HTTP-запитів у React?</summary>
+<summary>101. Які підходи використовуються для виконання HTTP-запитів у React?</summary>
 
 #### React
 
@@ -5820,7 +5820,7 @@ export default useFetch;
 </details>
 
 <details>
-<summary>104. Яка різниця між createElement і cloneElement?</summary>
+<summary>102. Яка різниця між createElement і cloneElement?</summary>
 
 #### React
 
@@ -5864,7 +5864,7 @@ const clonedElement = React.cloneElement(originalElement, {
 </details>
 
 <details>
-<summary>105. Що таке компоненти вищого порядку (Higher-Order components)?</summary>
+<summary>103. Що таке компоненти вищого порядку (Higher-Order components)?</summary>
 
 #### React
 
@@ -5934,7 +5934,7 @@ HOC — потужний інструмент для повторного вик
 </details>
 
 <details>
-<summary>106. Чи підтримує функція lazy іменований експорт?</summary>
+<summary>104. Чи підтримує функція lazy іменований експорт?</summary>
 
 #### React
 
@@ -5961,7 +5961,7 @@ export default LazyComponent;
 </details>
 
 <details>
-<summary>107. Які переваги React?</summary>
+<summary>105. Які переваги React?</summary>
 
 #### React
 
@@ -6006,7 +6006,7 @@ React — це гнучкий, продуктивний і сучасний ін
 </details>
 
 <details>
-<summary>108. Які обмеження React?</summary>
+<summary>106. Які обмеження React?</summary>
 
 #### React
 
@@ -6027,7 +6027,7 @@ React — це гнучкий, продуктивний і сучасний ін
 </details>
 
 <details>
-<summary>109. Для чого призначений метод registerServiceWorker() у React?</summary>
+<summary>107. Для чого призначений метод registerServiceWorker() у React?</summary>
 
 #### React
 
@@ -6058,7 +6058,7 @@ register();
 </details>
 
 <details>
-<summary>110. Що таке синтетичні події (SyntheticEvent) у React?</summary>
+<summary>108. Що таке синтетичні події (SyntheticEvent) у React?</summary>
 
 #### React
 
@@ -6096,7 +6096,7 @@ function MyComponent() {
 </details>
 
 <details>
-<summary>89. Техніки оптимізації перфомансу React?</summary>
+<summary>109. Техніки оптимізації перфомансу React?</summary>
 
 #### React
 
@@ -6156,7 +6156,7 @@ function MyComponent() {
 </details>
 
 <details>
-<summary>111. Чи можливо використовувати async/await у React?</summary>
+<summary>110. Чи можливо використовувати async/await у React?</summary>
 
 #### React
 
@@ -6198,7 +6198,7 @@ const fetchData = async () => {
 </details>
 
 <details>
-<summary>112. Яка історія еволюції React?</summary>
+<summary>111. Яка історія еволюції React?</summary>
 
 #### React
 
@@ -6275,7 +6275,7 @@ React залишився популярним завдяки високій пр
 </details>
 
 <details>
-<summary>113. Які нововведення було додано в React 19?</summary>
+<summary>112. Які нововведення було додано в React 19?</summary>
 
 #### React
 
@@ -6298,7 +6298,7 @@ React залишився популярним завдяки високій пр
 </details>
 
 <details>
-<summary>114. Що рекомендують використовувати розробники React після того як React Create App став Deprecated?</summary>
+<summary>113. Що рекомендують використовувати розробники React після того як React Create App став Deprecated?</summary>
 
 #### React
 
@@ -6315,7 +6315,7 @@ React залишився популярним завдяки високій пр
 </details>
 
 <details>
-<summary>115. ???</summary>
+<summary>114. ???</summary>
 
 #### React
 
