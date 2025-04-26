@@ -7,23 +7,3 @@
 - Кожне питання повинне бути оформлене в HTML-елементі `<details>` зі структурою:
 
 ![Code](../assets/code.png)
-
-<details>
-<summary>Питання?</summary>
-
-#### React
-
-- Відповідь...
-
-1. **Приклад:** використовуйте...
-
-```jsx
-function Greeting(props) {
-  return <h1>Hello, {props.name}!</h1>;
-}
-
-// Використання:
-<Greeting name="Evan" />;
-```
-
-</details>
